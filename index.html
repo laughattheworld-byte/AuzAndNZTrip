@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16262B">
+<title>Sydney → Auckland · Trip Itinerary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2EE;--card:#FFFFFF;--ink:#16262B;--ink-soft:#54646A;--line:#E3E5DF;
+    --au:#C06A16;--au-deep:#8F4C0C;--au-wash:#FBF1E4;
+    --nz:#137C8B;--nz-deep:#0C5561;--nz-wash:#E5F1F2;
+    --yt:#C4302B;
+    --display:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',ui-monospace,monospace;--body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:56px}
+  .wrap{max-width:600px;margin:0 auto}
+
+  header{background:var(--ink);color:#EDEFEA;padding:26px 22px 22px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:22px;background:radial-gradient(circle at 11px center,var(--paper) 10px,transparent 11px);background-size:22px 22px;background-repeat:repeat-x}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8FB6BC;margin-bottom:14px}
+  .route{font-family:var(--display);font-weight:700;font-size:clamp(34px,11vw,46px);line-height:.98;letter-spacing:-.01em;display:flex;align-items:center;gap:.28em;flex-wrap:wrap}
+  .route .arrow{color:var(--au);font-weight:500}
+  .route .to{color:var(--nz)}
+  .subroute{font-family:var(--mono);font-size:12.5px;color:#B8C6C9;margin-top:10px;letter-spacing:.02em}
+  .stats{display:flex;gap:0;margin-top:20px;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
+  .stat{flex:1}
+  .stat + .stat{border-left:1px solid rgba(255,255,255,.14);padding-left:14px}
+  .stat .n{font-family:var(--display);font-weight:600;font-size:21px;display:block;line-height:1}
+  .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8FB6BC;margin-top:6px;display:block}
+
+  .band{padding:30px 22px 6px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .band h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .band .dates{font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.02em;white-space:nowrap}
+  .flag{width:12px;height:12px;border-radius:50%;flex:none}
+  .au-c .flag{background:var(--au)}
+  .nz-c .flag{background:var(--nz)}
+
+  .line-list{position:relative;padding:14px 22px 8px}
+  .rail{position:absolute;left:32px;top:0;bottom:0;width:2px;border-radius:2px}
+  .au-c .rail{background:var(--au)}
+  .nz-c .rail{background:var(--nz)}
+
+  .stop{position:relative;padding-left:34px;padding-bottom:18px}
+  .dot{position:absolute;left:4px;top:4px;width:15px;height:15px;border-radius:50%;background:var(--card);border:3px solid var(--au);z-index:2}
+  .nz-c .dot{border-color:var(--nz)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,40,45,.04)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .place{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+  .when{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:3px;letter-spacing:.01em}
+  .nights{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.03em;padding:5px 9px;border-radius:999px;white-space:nowrap;flex:none}
+  .au-c .nights{background:var(--au-wash);color:var(--au-deep)}
+  .nz-c .nights{background:var(--nz-wash);color:var(--nz-deep)}
+
+  .todo{list-style:none;margin:11px 0 0}
+  .todo li{position:relative;padding-left:15px;font-size:13.5px;color:var(--ink);margin-top:4px}
+  .todo li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--ink-soft)}
+  .wild{color:var(--au-deep);font-weight:500}
+  .nz-c .wild{color:var(--nz-deep)}
+
+  .hikes{margin-top:12px;background:var(--au-wash);border-radius:10px;padding:10px 12px}
+  .nz-c .hikes{background:var(--nz-wash)}
+  .hikes .ht{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--au-deep);display:flex;align-items:center;gap:6px;margin-bottom:7px}
+  .nz-c .hikes .ht{color:var(--nz-deep)}
+  .hikes ul{list-style:none}
+  .hikes li{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-top:4px;align-items:baseline}
+  .hikes li .nm{color:var(--ink)}
+  .hikes li .nm b{font-weight:600}
+  .hikes li .mi{font-family:var(--mono);font-size:11px;color:var(--ink-soft);white-space:nowrap;flex:none}
+
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;padding:4px 8px;border-radius:7px;border:1px dashed var(--line);color:var(--ink-soft)}
+  .tag b{color:var(--ink);font-weight:700}
+
+  .acts{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.02em;text-decoration:none;padding:9px 12px;border-radius:9px;min-height:40px}
+  .btn svg{width:13px;height:13px}
+  .btn-map{background:var(--ink);color:var(--card)}
+  .btn-map svg{stroke:currentColor;fill:none;stroke-width:2}
+  .btn-yt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-yt .play{color:var(--yt)}
+  .btn:active{opacity:.85}
+  .btn:focus-visible{outline:3px solid var(--nz);outline-offset:2px}
+
+  .hop{position:relative;padding-left:34px;padding-bottom:18px}
+  .hop .badge{position:absolute;left:-1px;top:2px;width:26px;height:26px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:2}
+  .hop .badge svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.7}
+  .hop .htext{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--ink-soft);padding:4px 0 0 6px}
+  .hop .htext b{color:var(--ink);font-weight:700}
+
+  .tasman{margin:8px 22px 0;padding:14px 16px;border-radius:14px;background:linear-gradient(100deg,var(--au-wash),var(--nz-wash));border:1px solid var(--line);display:flex;align-items:center;gap:12px}
+  .tasman svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6;flex:none}
+  .tasman .t1{font-family:var(--display);font-weight:600;font-size:14px}
+  .tasman .t2{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:2px}
+
+  .depart{margin:6px 22px 0;padding:16px;border-radius:14px;border:1.5px dashed var(--nz);text-align:center}
+  .depart .d1{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nz-deep)}
+  .depart .d2{font-family:var(--display);font-weight:600;font-size:17px;margin-top:5px}
+
+  footer{padding:26px 22px 8px;text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.7}
+
+  @media (min-width:601px){.wrap{margin-top:20px;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(20,40,45,.1)}header{padding-top:32px}}
+  @media (prefers-reduced-motion:no-preference){.stop,.hop{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Trip Itinerary · 2026</div>
+    <div class="route">SYD <span class="arrow">→</span> <span class="to">AKL</span></div>
+    <div class="subroute">25 Oct – 28 Nov · Australia + New Zealand</div>
+    <div class="stats">
+      <div class="stat"><span class="n">34</span><span class="l">Nights</span></div>
+      <div class="stat"><span class="n">17</span><span class="l">Stops</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">Countries</span></div>
+    </div>
+  </header>
+
+  <!-- ===================== AUSTRALIA ===================== -->
+  <section class="au-c">
+    <div class="band"><h2><span class="flag"></span>Australia</h2><span class="dates">25 OCT – 8 NOV · 15 nts</span></div>
+    <div class="line-list">
+      <div class="rail"></div>
+
+      <!-- Sydney arrive -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Sydney</div><div class="when">25–26 Oct · arrive</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Opera House + Harbour Bridge / BridgeClimb</li><li>Circular Quay, The Rocks, Manly ferry</li><li>Bondi → Coogee coastal walk</li></ul>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Opera+House" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Sydney → Cairns · ~3 hrs · 27 Oct</div></div>
+
+      <!-- Cairns -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Cairns</div><div class="when">27–30 Oct</div></div><span class="nights">4 NTS</span></div>
+          <ul class="todo"><li>Great Barrier Reef — full-day snorkel/dive</li><li>Daintree & Cape Tribulation</li><li>Kuranda via the Skyrail cableway</li></ul>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cairns+Queensland" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cairns+Great+Barrier+Reef+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Cairns → Sydney · 31 Oct</div></div>
+
+      <!-- Sydney hub / Blue Mountains -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Sydney · Blue Mountains</div><div class="when">31 Oct · hub stop</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>Blue Mountains day trip — Three Sisters, Scenic World</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options — Blue Mountains</div><ul>
+            <li><span class="nm"><b>Giant Stairway + Federal Pass</b> · moderate, 900+ steps</span><span class="mi">3.1 mi</span></li>
+            <li><span class="nm"><b>Wentworth Falls</b> Track · moderate</span><span class="mi">2.9 mi</span></li>
+            <li><span class="nm"><b>Grand Canyon</b> loop (Blackheath) · moderate</span><span class="mi">3.7 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Blue+Mountains+Katoomba" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Blue+Mountains+Australia+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Sydney → Hobart · ~2 hrs · 1 Nov</div></div>
+
+      <!-- Hobart -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Hobart · Tasmania</div><div class="when">1–2 Nov</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>MONA, Salamanca, kunanyi/Mt Wellington</li><li>Port Arthur convict site day trip</li><li class="wild">◆ Bonorong Sanctuary — wombats, devils</li></ul>
+          <div class="tags"><span class="tag">🚗 Car pickup: <b>Hobart Airport</b></span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hobart+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Hobart+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Hobart → Freycinet · ~2.5 hrs</div></div>
+
+      <!-- Freycinet -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Freycinet</div><div class="when">3–4 Nov</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Wineglass Bay; Bay of Fires</li><li class="wild">◆ Maria Island day — wombats & wallabies</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Wineglass Bay Lookout</b> · moderate</span><span class="mi">1.7 mi</span></li>
+            <li><span class="nm"><b>Wineglass + Hazards</b> circuit · half-day</span><span class="mi">6.8 mi</span></li>
+            <li><span class="nm"><b>Mt Amos</b> · steep scramble</span><span class="mi">2.5 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Freycinet+National+Park+Wineglass+Bay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Freycinet+Wineglass+Bay+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Freycinet → Cradle Mtn · ~4 hrs</div></div>
+
+      <!-- Cradle Mountain -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Cradle Mountain</div><div class="when">5 Nov</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>Dove Lake, alpine wildlife (wombats at dusk)</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Dove Lake Circuit</b> · easy, the classic</span><span class="mi">3.7 mi</span></li>
+            <li><span class="nm"><b>Marions Lookout</b> · moderate–steep</span><span class="mi">4.7 mi</span></li>
+            <li><span class="nm"><b>Cradle Summit</b> · hard, scrambling</span><span class="mi">8 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cradle+Mountain+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cradle+Mountain+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Cradle Mtn → Launceston · ~1.5 hrs</div></div>
+
+      <!-- Launceston -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Launceston</div><div class="when">6 Nov</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>Cataract Gorge, Tamar Valley wineries</li></ul>
+          <div class="tags"><span class="tag">🚗 Car drop: <b>Launceston Airport</b></span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Launceston+Tasmania+Cataract+Gorge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Launceston+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Launceston → Sydney · ~2 hrs · 7 Nov</div></div>
+
+      <!-- Sydney finish -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Sydney</div><div class="when">7–8 Nov · finish + buffer</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Taronga Zoo, Darling Harbour, Manly</li><li>Relax before the trans-Tasman flight</li></ul>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Harbour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+4K" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tasman">
+    <svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg>
+    <div><div class="t1">Trans-Tasman flight</div><div class="t2">Sydney → Queenstown · ~3 hrs · 9 Nov</div></div>
+  </div>
+
+  <!-- ===================== NEW ZEALAND ===================== -->
+  <section class="nz-c">
+    <div class="band"><h2><span class="flag"></span>New Zealand</h2><span class="dates">9 – 27 NOV · 19 nts · West Coast</span></div>
+    <div class="line-list">
+      <div class="rail"></div>
+
+      <!-- Queenstown -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Queenstown</div><div class="when">9–12 Nov · South Island</div></div><span class="nights">4 NTS</span></div>
+          <ul class="todo"><li>Gondola + luge; bungy; Shotover jet</li><li>Milford Sound full-day cruise; Arrowtown</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Queenstown Hill</b> · moderate</span><span class="mi">3 mi</span></li>
+            <li><span class="nm"><b>Ben Lomond</b> · strenuous alpine, 6–8 hr</span><span class="mi">7 mi</span></li>
+            <li><span class="nm"><b>Key Summit</b> (Milford day) · moderate</span><span class="mi">2.1 mi</span></li>
+          </ul></div>
+          <div class="tags"><span class="tag">🚗 Car A pickup: <b>Queenstown</b></span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Queenstown+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Queenstown+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Queenstown → Wānaka · ~1 hr</div></div>
+
+      <!-- Wanaka -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Wānaka</div><div class="when">13 Nov</div></div><span class="nights">1 NT</span></div>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Roys Peak</b> · ~4,100 ft up, 5–6 hr, the ridge shot</span><span class="mi">10 mi</span></li>
+            <li><span class="nm"><b>Rob Roy Glacier</b> · moderate</span><span class="mi">6 mi</span></li>
+            <li><span class="nm"><b>Diamond Lake</b> / Rocky Mtn · moderate</span><span class="mi">4.5 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wanaka+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wanaka+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> over the Haast Pass · ~4 hrs</div></div>
+
+      <!-- Franz Josef -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Franz Josef Glacier</div><div class="when">14 Nov</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>Glacier heli-hike (guided, weather-dependent)</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Glacier Valley Walk</b> · easy, to viewpoint</span><span class="mi">3.4 mi</span></li>
+            <li><span class="nm"><b>Lake Matheson</b> loop · easy, reflections</span><span class="mi">2.6 mi</span></li>
+            <li><span class="nm"><b>Roberts Point</b> · harder</span><span class="mi">7 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Franz+Josef+Glacier" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Franz+Josef+Glacier+New+Zealand" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> up the West Coast · ~2.5 hrs</div></div>
+
+      <!-- Punakaiki -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Punakaiki</div><div class="when">15 Nov</div></div><span class="nights">1 NT</span></div>
+          <div class="hikes"><div class="ht">🥾 Walks</div><ul>
+            <li><span class="nm"><b>Pancake Rocks</b> & blowholes · easy</span><span class="mi">0.7 mi</span></li>
+            <li><span class="nm"><b>Truman Track</b> · easy, coastal</span><span class="mi">0.9 mi</span></li>
+            <li><span class="nm"><b>Pororari River</b> · easy–moderate gorge</span><span class="mi">4 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Punakaiki+Pancake+Rocks" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Punakaiki+Pancake+Rocks" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Abel Tasman · ~3 hrs</div></div>
+
+      <!-- Abel Tasman -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Abel Tasman</div><div class="when">16–17 Nov</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Golden beaches; kayak the coastline</li></ul>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Mārahau → Anchorage</b> · easy–moderate, water-taxi back</span><span class="mi">7.5 mi</span></li>
+            <li><span class="nm"><b>Wainui Falls</b> · easy</span><span class="mi">1.9 mi</span></li>
+          </ul></div>
+          <div class="tags"><span class="tag">🚗 Car A drop: <b>Picton</b> (18 Nov)</span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Abel+Tasman+National+Park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Abel+Tasman+National+Park+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M5 14l1.5-6h11L19 14M5 14h14M12 4v4"/></svg></span><div class="htext"><b>Ferry</b> Picton → Wellington · ~3.5 hrs · 18 Nov</div></div>
+
+      <!-- Wellington -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Wellington</div><div class="when">18–19 Nov · North Island</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Te Papa (free); Weta Workshop tour</li><li>Cable car & Cuba Street</li></ul>
+          <div class="tags"><span class="tag">🚗 Car B pickup: <b>Wellington</b></span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wellington+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wellington+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Tongariro · ~4.5 hrs</div></div>
+
+      <!-- Tongariro -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Tongariro</div><div class="when">20–21 Nov</div></div><span class="nights">2 NTS</span></div>
+          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
+            <li><span class="nm"><b>Alpine Crossing</b> · one-way, 7–8 hr, shuttle needed</span><span class="mi">12.4 mi</span></li>
+            <li><span class="nm"><b>Taranaki Falls</b> loop · easy–moderate</span><span class="mi">3.7 mi</span></li>
+            <li><span class="nm"><b>Tama Lakes</b> · moderate</span><span class="mi">10.5 mi</span></li>
+          </ul></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Rotorua · ~2.5 hrs</div></div>
+
+      <!-- Rotorua -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Rotorua</div><div class="when">22–23 Nov</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li>Geothermal parks; Māori hāngī evening</li><li>Waitomo glowworm caves day trip</li></ul>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Rotorua+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Rotorua+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> via <b>Hobbiton</b> tour → Auckland · 24 Nov</div></div>
+
+      <!-- Auckland -->
+      <div class="stop"><span class="dot"></span>
+        <div class="card">
+          <div class="card-top"><div><div class="place">Auckland</div><div class="when">24–27 Nov · finish</div></div><span class="nights">4 NTS</span></div>
+          <ul class="todo"><li>Hobbiton movie set en route</li><li>Waiheke Island wineries; Sky Tower</li><li>Buffer day before the flight home</li></ul>
+          <div class="tags"><span class="tag">🚗 Car B drop: <b>Auckland</b></span></div>
+          <div class="acts">
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Auckland+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Auckland+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="depart"><div class="d1">✈ Depart</div><div class="d2">Auckland · 28 Nov</div></div>
+
+  <footer><p>◆ = notable wild wildlife · Tasmania has wombats &amp; wallabies (no koalas)<br>
+  Cars: Tasmania (Hobart→Launceston) · South Island (Queenstown→Picton) · North Island (Wellington→Auckland)<br>
+  Tap <b>Maps</b> for the location · tap <b>Top reel</b> for the best videos of each place</p></footer>
+
+</div>
+</body>
+</html>
