@@ -99,6 +99,26 @@
   .tasman .t1{font-family:var(--display);font-weight:600;font-size:14px}
   .tasman .t2{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:2px}
 
+  .flight{margin:16px 22px 4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,40,45,.04)}
+  .flight.ret{border:1.5px dashed var(--nz)}
+  .flight .ihead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .flight .ihead .fnum{display:flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:14px}
+  .flight .ihead .fnum svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.7;flex:none}
+  .flight .ihead .fdur{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.02em;white-space:nowrap;text-align:right}
+  .fleg{position:relative;padding-left:22px;display:flex;align-items:flex-start;gap:14px;padding-top:12px}
+  .fleg .fdot{position:absolute;left:0;top:16px;width:11px;height:11px;border-radius:50%;border:2.5px solid var(--ink);background:var(--card);z-index:2}
+  .fleg .ftime{font-family:var(--display);font-weight:700;font-size:25px;line-height:1;letter-spacing:-.02em;flex:none;min-width:62px}
+  .fleg .fcodeline{font-size:13.5px;margin-top:1px}
+  .fleg .fcodeline b{font-family:var(--mono);font-weight:700}
+  .fleg .fsub{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:4px;letter-spacing:.01em}
+  .fplus{background:var(--au-wash);color:var(--au-deep);border-radius:5px;padding:1px 6px;font-family:var(--mono);font-weight:700;font-size:10px;margin-left:5px;white-space:nowrap}
+  .fplus.same{background:var(--nz-wash);color:var(--nz-deep)}
+  .frail{position:relative;margin:5px 0 1px 5px;height:15px;border-left:2px dotted var(--line)}
+  .frail .fdlabel{position:absolute;left:16px;top:-2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);letter-spacing:.02em}
+  .flight .fmeta{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);line-height:1.6}
+  .flight .code{background:var(--paper);border-radius:5px;padding:1px 6px}
+  .flight .warn{margin-top:11px;padding:9px 11px;border-radius:9px;background:var(--au-wash);color:var(--au-deep);font-size:11.5px;font-family:var(--mono);line-height:1.6}
+  .flight .okline{margin-top:11px;padding:9px 11px;border-radius:9px;background:var(--nz-wash);color:var(--nz-deep);font-size:11.5px;font-family:var(--mono);line-height:1.6}
   .depart{margin:6px 22px 0;padding:16px;border-radius:14px;border:1.5px dashed var(--nz);text-align:center}
   .depart .d1{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nz-deep)}
   .depart .d2{font-family:var(--display);font-weight:600;font-size:17px;margin-top:5px}
@@ -119,14 +139,41 @@
     <div class="subroute">25 Oct – 28 Nov · Australia + New Zealand</div>
     <div class="stats">
       <div class="stat"><span class="n">34</span><span class="l">Nights</span></div>
-      <div class="stat"><span class="n">17</span><span class="l">Stops</span></div>
+      <div class="stat"><span class="n">16</span><span class="l">Stops</span></div>
       <div class="stat"><span class="n">2</span><span class="l">Countries</span></div>
     </div>
   </header>
 
+  <!-- ===================== INTERNATIONAL ARRIVAL ===================== -->
+  <div class="flight">
+    <div class="ihead">
+      <span class="fnum"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg> NZ007 · Air New Zealand</span>
+      <span class="fdur">Getting there<br>12h 55m · Economy</span>
+    </div>
+    <div class="fleg">
+      <span class="fdot"></span>
+      <div class="ftime">21:05</div>
+      <div class="fwhere">
+        <div class="fcodeline"><b>SFO</b> San Francisco</div>
+        <div class="fsub">DEPART · Fri 23 Oct · Terminal I</div>
+      </div>
+    </div>
+    <div class="frail"><span class="fdlabel">✈ overnight · 12h 55m</span></div>
+    <div class="fleg">
+      <span class="fdot"></span>
+      <div class="ftime">06:00</div>
+      <div class="fwhere">
+        <div class="fcodeline"><b>AKL</b> Auckland <span class="fplus">+2 days</span></div>
+        <div class="fsub">ARRIVE · Sun 25 Oct · Terminal I</div>
+      </div>
+    </div>
+    <div class="fmeta">Ref <span class="code">6QUYNH</span> · e-tkt 086-4827995112 · bag 1×23 kg</div>
+    <div class="warn">➕ <b>Onward (separate ticket): AKL 09:00 → SYD 10:35</b>, 25 Oct · 3h 35m. Only a 3-hr connection from NZ007 — you clear NZ customs, grab the bag &amp; re-check, so it's workable but tight if NZ007 is late. You enter NZ that day, so your <b>NZ visa must be valid from 25 Oct</b>.</div>
+  </div>
+
   <!-- ===================== AUSTRALIA ===================== -->
   <section class="au-c">
-    <div class="band"><h2><span class="flag"></span>Australia</h2><span class="dates">25 OCT – 8 NOV · 15 nts</span></div>
+    <div class="band"><h2><span class="flag"></span>Australia</h2><span class="dates">25 OCT – 6 NOV · 13 nts</span></div>
     <div class="line-list">
       <div class="rail"></div>
 
@@ -233,8 +280,8 @@
       <!-- Launceston -->
       <div class="stop"><span class="dot"></span>
         <div class="card">
-          <div class="card-top"><div><div class="place">Launceston</div><div class="when">6 Nov</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>Cataract Gorge, Tamar Valley wineries</li></ul>
+          <div class="card-top"><div><div class="place">Launceston</div><div class="when">6 Nov · day only</div></div><span class="nights">DAY</span></div>
+          <ul class="todo"><li>Cataract Gorge &amp; Tamar Valley by day</li><li>Drop the car, then the night flight out</li></ul>
           <div class="tags"><span class="tag">🚗 Car drop: <b>Launceston Airport</b></span></div>
           <div class="acts">
             <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Launceston+Tasmania+Cataract+Gorge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
@@ -243,17 +290,13 @@
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Launceston → Sydney · ~2 hrs · 7 Nov</div></div>
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Night flight</b> Launceston ~20:30 → Sydney ~22:00 · 6 Nov</div></div>
 
-      <!-- Sydney finish -->
+      <!-- Sydney overnight turnaround -->
       <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Sydney</div><div class="when">7–8 Nov · finish + buffer</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Taronga Zoo, Darling Harbour, Manly</li><li>Relax before the trans-Tasman flight</li></ul>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Harbour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+4K" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
+        <div class="card" style="border-style:dashed">
+          <div class="card-top"><div><div class="place">Sydney · overnight transit</div><div class="when">6 Nov · airport hotel</div></div><span class="nights">TIGHT</span></div>
+          <ul class="todo"><li>⚠ Land ~22:00, fly out 06:15 — short turnaround</li><li>Airport hotel; be back at Int'l by ~03:15</li><li>~3–4 hrs' rest, then straight to New Zealand</li></ul>
         </div>
       </div>
     </div>
@@ -261,26 +304,26 @@
 
   <div class="tasman">
     <svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg>
-    <div><div class="t1">Trans-Tasman flight</div><div class="t2">Sydney → Queenstown · ~3 hrs · 9 Nov</div></div>
+    <div><div class="t1">Trans-Tasman flight</div><div class="t2">Sydney 06:15 → Queenstown 11:10 · 7 Nov</div></div>
   </div>
 
   <!-- ===================== NEW ZEALAND ===================== -->
   <section class="nz-c">
-    <div class="band"><h2><span class="flag"></span>New Zealand</h2><span class="dates">9 – 27 NOV · 19 nts · West Coast</span></div>
+    <div class="band"><h2><span class="flag"></span>New Zealand</h2><span class="dates">7 – 27 NOV · 21 nts · East route</span></div>
     <div class="line-list">
       <div class="rail"></div>
 
       <!-- Queenstown -->
       <div class="stop"><span class="dot"></span>
         <div class="card">
-          <div class="card-top"><div><div class="place">Queenstown</div><div class="when">9–12 Nov · South Island</div></div><span class="nights">4 NTS</span></div>
-          <ul class="todo"><li>Gondola + luge; bungy; Shotover jet</li><li>Milford Sound full-day cruise; Arrowtown</li></ul>
+          <div class="card-top"><div><div class="place">Queenstown</div><div class="when">7–12 Nov · South Island</div></div><span class="nights">6 NTS</span></div>
+          <ul class="todo"><li>Arrive 11:10 (7 Nov) — easy first afternoon after the red-eye</li><li><b>Both sounds by coach (no car):</b> Milford full-day cruise + Doubtful Sound overnight cruise</li><li>Gondola + luge; bungy; Shotover jet; Arrowtown &amp; Glenorchy</li></ul>
           <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
             <li><span class="nm"><b>Queenstown Hill</b> · moderate</span><span class="mi">3 mi</span></li>
             <li><span class="nm"><b>Ben Lomond</b> · strenuous alpine, 6–8 hr</span><span class="mi">7 mi</span></li>
             <li><span class="nm"><b>Key Summit</b> (Milford day) · moderate</span><span class="mi">2.1 mi</span></li>
           </ul></div>
-          <div class="tags"><span class="tag">🚗 Car A pickup: <b>Queenstown</b></span></div>
+          <div class="tags"><span class="tag">🏨 Booked: <b>Adventure Queenstown Hostel</b>, 36 Camp St · 7–13 Nov</span><span class="tag">🚶 Car-free — pick up Car A on 13 Nov</span></div>
           <div class="acts">
             <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Queenstown+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
             <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Queenstown+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
@@ -288,7 +331,7 @@
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Queenstown → Wānaka · ~1 hr</div></div>
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Pick up Car A</b> in Queenstown, then <b>drive</b> → Wānaka · ~1 hr · 13 Nov</div></div>
 
       <!-- Wanaka -->
       <div class="stop"><span class="dot"></span>
@@ -306,63 +349,64 @@
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> over the Haast Pass · ~4 hrs</div></div>
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> W&#257;naka &#8594; Aoraki/Mt Cook &middot; ~3 hrs</div></div>
 
-      <!-- Franz Josef -->
+      <!-- Aoraki / Mt Cook -->
       <div class="stop"><span class="dot"></span>
         <div class="card">
-          <div class="card-top"><div><div class="place">Franz Josef Glacier</div><div class="when">14 Nov</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>Glacier heli-hike (guided, weather-dependent)</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Glacier Valley Walk</b> · easy, to viewpoint</span><span class="mi">3.4 mi</span></li>
-            <li><span class="nm"><b>Lake Matheson</b> loop · easy, reflections</span><span class="mi">2.6 mi</span></li>
-            <li><span class="nm"><b>Roberts Point</b> · harder</span><span class="mi">7 mi</span></li>
+          <div class="card-top"><div><div class="place">Aoraki / Mt Cook</div><div class="when">14 Nov</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>NZ&#8217;s highest peak; turquoise Lake Pukaki en route</li><li>Dark Sky Reserve &#8212; superb stargazing</li></ul>
+          <div class="hikes"><div class="ht">&#129406; Hike options</div><ul>
+            <li><span class="nm"><b>Hooker Valley Track</b> &middot; easy&#8211;moderate, 3 hr, glacial lake</span><span class="mi">6.2 mi</span></li>
+            <li><span class="nm"><b>Kea Point</b> &middot; easy, moraine viewpoint</span><span class="mi">2.2 mi</span></li>
+            <li><span class="nm"><b>Sealy Tarns</b> &middot; steep, ~2,200 steps</span><span class="mi">2.3 mi</span></li>
+            <li><span class="nm"><b>Mueller Hut</b> &middot; hard, full day</span><span class="mi">6.5 mi</span></li>
           </ul></div>
           <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Franz+Josef+Glacier" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Franz+Josef+Glacier+New+Zealand" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Aoraki+Mount+Cook+National+Park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Aoraki+Mount+Cook+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
           </div>
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> up the West Coast · ~2.5 hrs</div></div>
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Mt Cook &#8594; Lake Tekapo &middot; ~1 hr</div></div>
 
-      <!-- Punakaiki -->
+      <!-- Lake Tekapo -->
       <div class="stop"><span class="dot"></span>
         <div class="card">
-          <div class="card-top"><div><div class="place">Punakaiki</div><div class="when">15 Nov</div></div><span class="nights">1 NT</span></div>
-          <div class="hikes"><div class="ht">🥾 Walks</div><ul>
-            <li><span class="nm"><b>Pancake Rocks</b> & blowholes · easy</span><span class="mi">0.7 mi</span></li>
-            <li><span class="nm"><b>Truman Track</b> · easy, coastal</span><span class="mi">0.9 mi</span></li>
-            <li><span class="nm"><b>Pororari River</b> · easy–moderate gorge</span><span class="mi">4 mi</span></li>
+          <div class="card-top"><div><div class="place">Lake Tekapo</div><div class="when">15 Nov</div></div><span class="nights">1 NT</span></div>
+          <ul class="todo"><li>Church of the Good Shepherd; unreal turquoise lake</li><li>Mt John Observatory stargazing tour (book ahead)</li><li>Tekapo Springs hot pools</li></ul>
+          <div class="hikes"><div class="ht">&#129406; Hike</div><ul>
+            <li><span class="nm"><b>Mt John Summit Circuit</b> &middot; moderate, lake panorama</span><span class="mi">4.7 mi</span></li>
           </ul></div>
           <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Punakaiki+Pancake+Rocks" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Punakaiki+Pancake+Rocks" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Lake+Tekapo+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Lake+Tekapo+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
           </div>
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Abel Tasman · ~3 hrs</div></div>
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Tekapo &#8594; Kaik&#333;ura, stopping in <b>Christchurch</b> &middot; ~5 hrs</div></div>
 
-      <!-- Abel Tasman -->
+      <!-- Kaikoura -->
       <div class="stop"><span class="dot"></span>
         <div class="card">
-          <div class="card-top"><div><div class="place">Abel Tasman</div><div class="when">16–17 Nov</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Golden beaches; kayak the coastline</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Mārahau → Anchorage</b> · easy–moderate, water-taxi back</span><span class="mi">7.5 mi</span></li>
-            <li><span class="nm"><b>Wainui Falls</b> · easy</span><span class="mi">1.9 mi</span></li>
+          <div class="card-top"><div><div class="place">Kaik&#333;ura</div><div class="when">16&#8211;17 Nov</div></div><span class="nights">2 NTS</span></div>
+          <ul class="todo"><li class="wild">&#9670; Whale watching (year-round sperm whales)</li><li class="wild">&#9670; Dusky dolphins &amp; the Point Kean seal colony</li><li>Famous crayfish; Christchurch Botanic Gardens en route</li></ul>
+          <div class="hikes"><div class="ht">&#129406; Hike options</div><ul>
+            <li><span class="nm"><b>Peninsula Walkway</b> &middot; easy&#8211;moderate, clifftop + seals</span><span class="mi">7 mi</span></li>
+            <li><span class="nm"><b>Point Kean seal colony</b> &middot; easy shoreline</span><span class="mi">1 mi</span></li>
           </ul></div>
-          <div class="tags"><span class="tag">🚗 Car A drop: <b>Picton</b> (18 Nov)</span></div>
+          <div class="tags"><span class="tag">&#128663; Car A drop: <b>Picton</b> (18 Nov)</span></div>
           <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Abel+Tasman+National+Park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Abel+Tasman+National+Park+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
+            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kaikoura+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
+            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Kaikoura+New+Zealand+whale+watching" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
           </div>
         </div>
       </div>
 
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M5 14l1.5-6h11L19 14M5 14h14M12 4v4"/></svg></span><div class="htext"><b>Ferry</b> Picton → Wellington · ~3.5 hrs · 18 Nov</div></div>
+
+      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M5 14l1.5-6h11L19 14M5 14h14M12 4v4"/></svg></span><div class="htext"><b>Drive</b> Kaikōura → Picton (~2.5 hrs), drop car · <b>Ferry</b> → Wellington ~3.5 hrs · 18 Nov</div></div>
 
       <!-- Wellington -->
       <div class="stop"><span class="dot"></span>
@@ -426,7 +470,31 @@
     </div>
   </section>
 
-  <div class="depart"><div class="d1">✈ Depart</div><div class="d2">Auckland · 28 Nov</div></div>
+  <div class="flight ret">
+    <div class="ihead">
+      <span class="fnum"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg> NZ008 · Air New Zealand</span>
+      <span class="fdur">Flying home<br>12h 10m · Economy</span>
+    </div>
+    <div class="fleg">
+      <span class="fdot"></span>
+      <div class="ftime">19:55</div>
+      <div class="fwhere">
+        <div class="fcodeline"><b>AKL</b> Auckland</div>
+        <div class="fsub">DEPART · Sat 28 Nov · Terminal I</div>
+      </div>
+    </div>
+    <div class="frail"><span class="fdlabel">✈ 12h 10m · date line gains a day back</span></div>
+    <div class="fleg">
+      <span class="fdot"></span>
+      <div class="ftime">11:05</div>
+      <div class="fwhere">
+        <div class="fcodeline"><b>SFO</b> San Francisco <span class="fplus same">same day</span></div>
+        <div class="fsub">ARRIVE · Sat 28 Nov · Terminal I</div>
+      </div>
+    </div>
+    <div class="fmeta">Ref <span class="code">KZM8SH</span> · e-tkt 086-4827995111 · bag 1×23 kg</div>
+    <div class="okline">✓ Matches the plan — you're in Auckland (last night 27 Nov); the evening departure leaves most of 28 Nov free.</div>
+  </div>
 
   <footer><p>◆ = notable wild wildlife · Tasmania has wombats &amp; wallabies (no koalas)<br>
   Cars: Tasmania (Hobart→Launceston) · South Island (Queenstown→Picton) · North Island (Wellington→Auckland)<br>
