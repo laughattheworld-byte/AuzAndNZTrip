@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#16262B">
-<title>Sydney → Auckland · Trip Itinerary</title>
+<title>Sydney &rarr; Auckland &middot; Trip Itinerary</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     --paper:#F1F2EE;--card:#FFFFFF;--ink:#16262B;--ink-soft:#54646A;--line:#E3E5DF;
     --au:#C06A16;--au-deep:#8F4C0C;--au-wash:#FBF1E4;
     --nz:#137C8B;--nz-deep:#0C5561;--nz-wash:#E5F1F2;
-    --yt:#C4302B;
+    --ok:#1E7A4C;--ok-wash:#E4F3EA;--warn:#9A5B00;--warn-wash:#FBF0DC;--red:#B3261E;--red-wash:#FBE6E4;
     --display:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',ui-monospace,monospace;--body:'Inter',system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -27,16 +27,16 @@
   .route{font-family:var(--display);font-weight:700;font-size:clamp(34px,11vw,46px);line-height:.98;letter-spacing:-.01em;display:flex;align-items:center;gap:.28em;flex-wrap:wrap}
   .route .arrow{color:var(--au);font-weight:500}
   .route .to{color:var(--nz)}
-  .subroute{font-family:var(--mono);font-size:12.5px;color:#B8C6C9;margin-top:10px;letter-spacing:.02em}
-  .stats{display:flex;gap:0;margin-top:20px;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
+  .subroute{font-family:var(--mono);font-size:12.5px;color:#B8C6C9;margin-top:10px}
+  .stats{display:flex;margin-top:20px;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
   .stat{flex:1}
   .stat + .stat{border-left:1px solid rgba(255,255,255,.14);padding-left:14px}
   .stat .n{font-family:var(--display);font-weight:600;font-size:21px;display:block;line-height:1}
   .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8FB6BC;margin-top:6px;display:block}
 
   .band{padding:30px 22px 6px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-  .band h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-  .band .dates{font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.02em;white-space:nowrap}
+  .band h2{font-family:var(--display);font-weight:700;font-size:24px;display:flex;align-items:center;gap:10px}
+  .band .dates{font-family:var(--mono);font-size:11px;color:var(--ink-soft);white-space:nowrap}
   .flag{width:12px;height:12px;border-radius:50%;flex:none}
   .au-c .flag{background:var(--au)}
   .nz-c .flag{background:var(--nz)}
@@ -51,455 +51,182 @@
   .nz-c .dot{border-color:var(--nz)}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,40,45,.04)}
+  .card.dash{border-style:dashed}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-  .place{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
-  .when{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:3px;letter-spacing:.01em}
-  .nights{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.03em;padding:5px 9px;border-radius:999px;white-space:nowrap;flex:none}
+  .place{font-family:var(--display);font-weight:600;font-size:18px}
+  .when{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:3px}
+  .nights{font-family:var(--mono);font-weight:700;font-size:11px;padding:5px 9px;border-radius:999px;white-space:nowrap;flex:none}
   .au-c .nights{background:var(--au-wash);color:var(--au-deep)}
   .nz-c .nights{background:var(--nz-wash);color:var(--nz-deep)}
 
   .todo{list-style:none;margin:11px 0 0}
-  .todo li{position:relative;padding-left:15px;font-size:13.5px;color:var(--ink);margin-top:4px}
+  .todo li{position:relative;padding-left:15px;font-size:13.5px;margin-top:4px}
   .todo li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--ink-soft)}
   .wild{color:var(--au-deep);font-weight:500}
   .nz-c .wild{color:var(--nz-deep)}
 
   .hikes{margin-top:12px;background:var(--au-wash);border-radius:10px;padding:10px 12px}
   .nz-c .hikes{background:var(--nz-wash)}
-  .hikes .ht{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--au-deep);display:flex;align-items:center;gap:6px;margin-bottom:7px}
+  .hikes .ht{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--au-deep);margin-bottom:7px}
   .nz-c .hikes .ht{color:var(--nz-deep)}
   .hikes ul{list-style:none}
   .hikes li{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-top:4px;align-items:baseline}
-  .hikes li .nm{color:var(--ink)}
-  .hikes li .nm b{font-weight:600}
   .hikes li .mi{font-family:var(--mono);font-size:11px;color:var(--ink-soft);white-space:nowrap;flex:none}
 
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;padding:4px 8px;border-radius:7px;border:1px dashed var(--line);color:var(--ink-soft)}
-  .tag b{color:var(--ink);font-weight:700}
+  /* ---------- STAY BOX ---------- */
+  .stay{margin-top:13px;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .stay-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 11px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .stay-head .sh-l{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .stay-status{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:5px;white-space:nowrap}
+  .st-booked{background:var(--ok-wash);color:var(--ok)}
+  .st-tobook{background:var(--red-wash);color:var(--red);border:1px solid #F0C9C5}
+  .st-none{background:var(--paper);color:var(--ink-soft);border:1px solid var(--line)}
+  .stay-name{padding:9px 11px 4px;font-family:var(--display);font-weight:600;font-size:14px}
+  .stay-addr{padding:0 11px 9px;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);line-height:1.5}
+  .inout{display:flex;border-top:1px dashed var(--line)}
+  .inout > div{flex:1;padding:8px 11px}
+  .inout > div + div{border-left:1px dashed var(--line)}
+  .inout .io-l{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .inout .io-v{font-family:var(--display);font-weight:700;font-size:15px;margin-top:2px}
+  .inout .io-s{font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);margin-top:1px}
+  .stay-note{padding:8px 11px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);line-height:1.55}
+
+  /* ---------- FLIGHT / TRANSIT BOX ---------- */
+  .leg{position:relative;padding-left:34px;padding-bottom:18px}
+  .leg .badge{position:absolute;left:-1px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:2}
+  .leg .badge svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.7}
+  .flight{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,40,45,.04)}
+  .flight.intl{border-width:1.5px;border-color:var(--nz)}
+  .flight.drive{background:transparent;border-style:dashed;box-shadow:none}
+  .fhead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .fhead .fnum{font-family:var(--display);font-weight:600;font-size:13.5px}
+  .fhead .fmeta2{font-family:var(--mono);font-size:10px;color:var(--ink-soft);text-align:right;white-space:nowrap}
+  .fbody{display:flex;align-items:center;gap:10px;padding-top:11px}
+  .fend{flex:1;min-width:0}
+  .fend .ft{font-family:var(--display);font-weight:700;font-size:22px;line-height:1;letter-spacing:-.02em}
+  .fend .fc{font-family:var(--mono);font-size:11px;font-weight:700;margin-top:4px}
+  .fend .fd{font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);margin-top:2px}
+  .fend.right{text-align:right}
+  .fmid{flex:none;text-align:center;color:var(--ink-soft);padding:0 2px}
+  .fmid svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .fmid .fdur{font-family:var(--mono);font-size:9px;margin-top:2px;white-space:nowrap}
+  .fnote{margin-top:10px;padding:8px 10px;border-radius:8px;font-family:var(--mono);font-size:10.5px;line-height:1.55}
+  .fnote.ok{background:var(--ok-wash);color:var(--ok)}
+  .fnote.warn{background:var(--warn-wash);color:var(--warn)}
+  .fbook{margin-top:9px;font-family:var(--mono);font-size:10px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px}
+  .fbook b{color:var(--ink)}
+  .fbook.todo-book{color:var(--red)}
+  .fbook.todo-book b{color:var(--red)}
+  .drivetext{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);padding:2px 0}
+  .drivetext b{color:var(--ink)}
 
   .acts{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.02em;text-decoration:none;padding:9px 12px;border-radius:9px;min-height:40px}
+  .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;font-weight:700;text-decoration:none;padding:9px 12px;border-radius:9px;min-height:40px}
   .btn svg{width:13px;height:13px}
   .btn-map{background:var(--ink);color:var(--card)}
   .btn-map svg{stroke:currentColor;fill:none;stroke-width:2}
   .btn-yt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-  .btn-yt .play{color:var(--yt)}
+  .btn-yt .play{color:#C4302B}
   .btn:active{opacity:.85}
   .btn:focus-visible{outline:3px solid var(--nz);outline-offset:2px}
 
-  .hop{position:relative;padding-left:34px;padding-bottom:18px}
-  .hop .badge{position:absolute;left:-1px;top:2px;width:26px;height:26px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:2}
-  .hop .badge svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.7}
-  .hop .htext{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--ink-soft);padding:4px 0 0 6px}
-  .hop .htext b{color:var(--ink);font-weight:700}
-
-  .tasman{margin:8px 22px 0;padding:14px 16px;border-radius:14px;background:linear-gradient(100deg,var(--au-wash),var(--nz-wash));border:1px solid var(--line);display:flex;align-items:center;gap:12px}
-  .tasman svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6;flex:none}
-  .tasman .t1{font-family:var(--display);font-weight:600;font-size:14px}
-  .tasman .t2{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:2px}
-
-  .flight{margin:16px 22px 4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,40,45,.04)}
-  .flight.ret{border:1.5px dashed var(--nz)}
-  .flight .ihead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-  .flight .ihead .fnum{display:flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:14px}
-  .flight .ihead .fnum svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.7;flex:none}
-  .flight .ihead .fdur{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.02em;white-space:nowrap;text-align:right}
-  .fleg{position:relative;padding-left:22px;display:flex;align-items:flex-start;gap:14px;padding-top:12px}
-  .fleg .fdot{position:absolute;left:0;top:16px;width:11px;height:11px;border-radius:50%;border:2.5px solid var(--ink);background:var(--card);z-index:2}
-  .fleg .ftime{font-family:var(--display);font-weight:700;font-size:25px;line-height:1;letter-spacing:-.02em;flex:none;min-width:62px}
-  .fleg .fcodeline{font-size:13.5px;margin-top:1px}
-  .fleg .fcodeline b{font-family:var(--mono);font-weight:700}
-  .fleg .fsub{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:4px;letter-spacing:.01em}
-  .fplus{background:var(--au-wash);color:var(--au-deep);border-radius:5px;padding:1px 6px;font-family:var(--mono);font-weight:700;font-size:10px;margin-left:5px;white-space:nowrap}
-  .fplus.same{background:var(--nz-wash);color:var(--nz-deep)}
-  .frail{position:relative;margin:5px 0 1px 5px;height:15px;border-left:2px dotted var(--line)}
-  .frail .fdlabel{position:absolute;left:16px;top:-2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);letter-spacing:.02em}
-  .flight .fmeta{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);line-height:1.6}
-  .flight .code{background:var(--paper);border-radius:5px;padding:1px 6px}
-  .flight .warn{margin-top:11px;padding:9px 11px;border-radius:9px;background:var(--au-wash);color:var(--au-deep);font-size:11.5px;font-family:var(--mono);line-height:1.6}
-  .flight .okline{margin-top:11px;padding:9px 11px;border-radius:9px;background:var(--nz-wash);color:var(--nz-deep);font-size:11.5px;font-family:var(--mono);line-height:1.6}
-  .depart{margin:6px 22px 0;padding:16px;border-radius:14px;border:1.5px dashed var(--nz);text-align:center}
-  .depart .d1{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--nz-deep)}
-  .depart .d2{font-family:var(--display);font-weight:600;font-size:17px;margin-top:5px}
-
+  .tasman{margin:8px 22px 0;padding:14px 16px;border-radius:14px;background:linear-gradient(100deg,var(--au-wash),var(--nz-wash));border:1px solid var(--line)}
   footer{padding:26px 22px 8px;text-align:center}
   footer p{font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.7}
+  .legend{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
 
-  @media (min-width:601px){.wrap{margin-top:20px;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(20,40,45,.1)}header{padding-top:32px}}
-  @media (prefers-reduced-motion:no-preference){.stop,.hop{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+  @media (min-width:601px){.wrap{margin-top:20px;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(20,40,45,.1)}}
+  @media (prefers-reduced-motion:no-preference){.stop,.leg{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+
+  .chk{margin:26px 22px 0}
+  .chk h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:4px}
+  .chk .sub{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.6}
+  .chk-group{margin-top:16px}
+  .chk-group .gt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline}
+  .chk-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dotted var(--line)}
+  .chk-item:last-child{border-bottom:none}
+  .box{flex:none;width:16px;height:16px;border:2px solid var(--ink-soft);border-radius:4px;margin-top:2px}
+  .ci-body{flex:1;min-width:0}
+  .ci-t{font-size:13.5px;font-weight:600;line-height:1.35}
+  .ci-d{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:3px;line-height:1.5}
+  .pri{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border-radius:4px;margin-left:6px;white-space:nowrap;vertical-align:1px}
+  .p-now{background:#FBE4E4;color:#A32A2A}
+  .p-soon{background:var(--warn-wash);color:var(--warn)}
+  .p-ok{background:var(--ok-wash);color:var(--ok)}
+  .tiers{margin:26px 22px 0;border:1.5px solid var(--ink);border-radius:14px;overflow:hidden}
+  .tiers-head{background:var(--ink);color:#EDEFEA;padding:13px 15px}
+  .tiers-head .th1{font-family:var(--display);font-weight:700;font-size:17px}
+  .tiers-head .th2{font-family:var(--mono);font-size:10px;color:#8FB6BC;margin-top:4px;line-height:1.5}
+  .tier{padding:12px 15px;border-top:1px solid var(--line)}
+  .tier:first-of-type{border-top:none}
+  .tier-t{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+  .tier-n{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:5px;white-space:nowrap}
+  .t1{background:#FBE6E4;color:var(--red)}
+  .t2{background:var(--warn-wash);color:var(--warn)}
+  .t3{background:var(--ok-wash);color:var(--ok)}
+  .tier-l{font-family:var(--mono);font-size:10px;color:var(--ink-soft);letter-spacing:.04em}
+  .tier ol{margin:0;padding-left:0;list-style:none;counter-reset:ti}
+  .tier li{position:relative;padding-left:26px;font-size:13px;margin-top:7px;line-height:1.45}
+  .tier li::before{counter-increment:ti;content:counter(ti);position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:9.5px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .tier li .d{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);display:block;margin-top:2px;line-height:1.5}
+  .tier.flat li{padding-left:14px}
+  .tier.flat li::before{content:"";width:5px;height:5px;border:none;background:var(--ink-soft);top:8px;left:2px}
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header>
-    <div class="kicker">Trip Itinerary · 2026</div>
-    <div class="route">SYD <span class="arrow">→</span> <span class="to">AKL</span></div>
-    <div class="subroute">25 Oct – 28 Nov · Australia + New Zealand</div>
+    <div class="kicker">Trip Itinerary &middot; 2026</div>
+    <div class="route">SYD <span class="arrow">&rarr;</span> <span class="to">AKL</span></div>
+    <div class="subroute">25 Oct &ndash; 28 Nov &middot; Australia + New Zealand</div>
     <div class="stats">
       <div class="stat"><span class="n">34</span><span class="l">Nights</span></div>
-      <div class="stat"><span class="n">16</span><span class="l">Stops</span></div>
-      <div class="stat"><span class="n">2</span><span class="l">Countries</span></div>
+      <div class="stat"><span class="n">18</span><span class="l">Stops</span></div>
+      <div class="stat"><span class="n">8</span><span class="l">Flights</span></div>
     </div>
   </header>
 
-  <!-- ===================== INTERNATIONAL ARRIVAL ===================== -->
-  <div class="flight">
-    <div class="ihead">
-      <span class="fnum"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg> NZ007 · Air New Zealand</span>
-      <span class="fdur">Getting there<br>12h 55m · Economy</span>
-    </div>
-    <div class="fleg">
-      <span class="fdot"></span>
-      <div class="ftime">21:05</div>
-      <div class="fwhere">
-        <div class="fcodeline"><b>SFO</b> San Francisco</div>
-        <div class="fsub">DEPART · Fri 23 Oct · Terminal I</div>
-      </div>
-    </div>
-    <div class="frail"><span class="fdlabel">✈ overnight · 12h 55m</span></div>
-    <div class="fleg">
-      <span class="fdot"></span>
-      <div class="ftime">06:00</div>
-      <div class="fwhere">
-        <div class="fcodeline"><b>AKL</b> Auckland <span class="fplus">+2 days</span></div>
-        <div class="fsub">ARRIVE · Sun 25 Oct · Terminal I</div>
-      </div>
-    </div>
-    <div class="fmeta">Ref <span class="code">6QUYNH</span> · e-tkt 086-4827995112 · bag 1×23 kg</div>
-    <div class="warn">➕ <b>Onward (separate ticket): AKL 09:00 → SYD 10:35</b>, 25 Oct · 3h 35m. Only a 3-hr connection from NZ007 — you clear NZ customs, grab the bag &amp; re-check, so it's workable but tight if NZ007 is late. You enter NZ that day, so your <b>NZ visa must be valid from 25 Oct</b>.</div>
-  </div>
+  <div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight intl"><div class="fhead"><span class="fnum">NZ007 &middot; Air New Zealand</span><span class="fmeta2">Getting there<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">21:05</div><div class="fc">SFO</div><div class="fd">Fri 23 Oct &amp;middot; Term I</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">12h 55m</div></div><div class="fend right"><div class="ft">06:00</div><div class="fc">AKL +2d</div><div class="fd">Sun 25 Oct &amp;middot; Term I</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; ref 6QUYNH &middot; e-tkt 086-4827995112 &middot; bag 1&times;23 kg</div></div></div>
+  <div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">AKL &rarr; Sydney</span><span class="fmeta2">Self-connect<br>separate ticket</span></div><div class="fbody"><div class="fend"><div class="ft">09:00</div><div class="fc">AKL</div><div class="fd">Sun 25 Oct</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">3h 35m</div></div><div class="fend right"><div class="ft">10:35</div><div class="fc">SYD</div><div class="fd">Sun 25 Oct</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; separate ticket from NZ007</div><div class="fnote warn">&#9888; Only 3 hrs from NZ007 &mdash; clear NZ customs, collect bag, re-check. You enter NZ today, so your <b>NZ visa must be valid from 25 Oct</b>.</div></div></div>
 
-  <!-- ===================== AUSTRALIA ===================== -->
   <section class="au-c">
-    <div class="band"><h2><span class="flag"></span>Australia</h2><span class="dates">25 OCT – 6 NOV · 13 nts</span></div>
-    <div class="line-list">
-      <div class="rail"></div>
-
-      <!-- Sydney arrive -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Sydney</div><div class="when">25–26 Oct · arrive</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Opera House + Harbour Bridge / BridgeClimb</li><li>Circular Quay, The Rocks, Manly ferry</li><li>Bondi → Coogee coastal walk</li></ul>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Opera+House" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Sydney → Cairns · ~3 hrs · 27 Oct</div></div>
-
-      <!-- Cairns -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Cairns</div><div class="when">27–30 Oct</div></div><span class="nights">4 NTS</span></div>
-          <ul class="todo"><li>Great Barrier Reef — full-day snorkel/dive</li><li>Daintree & Cape Tribulation</li><li>Kuranda via the Skyrail cableway</li></ul>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cairns+Queensland" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cairns+Great+Barrier+Reef+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Cairns → Sydney · 31 Oct</div></div>
-
-      <!-- Sydney hub / Blue Mountains -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Sydney · Blue Mountains</div><div class="when">31 Oct · hub stop</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>Blue Mountains day trip — Three Sisters, Scenic World</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options — Blue Mountains</div><ul>
-            <li><span class="nm"><b>Giant Stairway + Federal Pass</b> · moderate, 900+ steps</span><span class="mi">3.1 mi</span></li>
-            <li><span class="nm"><b>Wentworth Falls</b> Track · moderate</span><span class="mi">2.9 mi</span></li>
-            <li><span class="nm"><b>Grand Canyon</b> loop (Blackheath) · moderate</span><span class="mi">3.7 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Blue+Mountains+Katoomba" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Blue+Mountains+Australia+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Fly</b> Sydney → Hobart · ~2 hrs · 1 Nov</div></div>
-
-      <!-- Hobart -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Hobart · Tasmania</div><div class="when">1–2 Nov</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>MONA, Salamanca, kunanyi/Mt Wellington</li><li>Port Arthur convict site day trip</li><li class="wild">◆ Bonorong Sanctuary — wombats, devils</li></ul>
-          <div class="tags"><span class="tag">🚗 Car pickup: <b>Hobart Airport</b></span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hobart+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Hobart+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Hobart → Freycinet · ~2.5 hrs</div></div>
-
-      <!-- Freycinet -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Freycinet</div><div class="when">3–4 Nov</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Wineglass Bay; Bay of Fires</li><li class="wild">◆ Maria Island day — wombats & wallabies</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Wineglass Bay Lookout</b> · moderate</span><span class="mi">1.7 mi</span></li>
-            <li><span class="nm"><b>Wineglass + Hazards</b> circuit · half-day</span><span class="mi">6.8 mi</span></li>
-            <li><span class="nm"><b>Mt Amos</b> · steep scramble</span><span class="mi">2.5 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Freycinet+National+Park+Wineglass+Bay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Freycinet+Wineglass+Bay+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Freycinet → Cradle Mtn · ~4 hrs</div></div>
-
-      <!-- Cradle Mountain -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Cradle Mountain</div><div class="when">5 Nov</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>Dove Lake, alpine wildlife (wombats at dusk)</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Dove Lake Circuit</b> · easy, the classic</span><span class="mi">3.7 mi</span></li>
-            <li><span class="nm"><b>Marions Lookout</b> · moderate–steep</span><span class="mi">4.7 mi</span></li>
-            <li><span class="nm"><b>Cradle Summit</b> · hard, scrambling</span><span class="mi">8 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cradle+Mountain+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cradle+Mountain+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Cradle Mtn → Launceston · ~1.5 hrs</div></div>
-
-      <!-- Launceston -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Launceston</div><div class="when">6 Nov · day only</div></div><span class="nights">DAY</span></div>
-          <ul class="todo"><li>Cataract Gorge &amp; Tamar Valley by day</li><li>Drop the car, then the night flight out</li></ul>
-          <div class="tags"><span class="tag">🚗 Car drop: <b>Launceston Airport</b></span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Launceston+Tasmania+Cataract+Gorge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Launceston+Tasmania+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="htext"><b>Night flight</b> Launceston ~20:30 → Sydney ~22:00 · 6 Nov</div></div>
-
-      <!-- Sydney overnight turnaround -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card" style="border-style:dashed">
-          <div class="card-top"><div><div class="place">Sydney · overnight transit</div><div class="when">6 Nov · airport hotel</div></div><span class="nights">TIGHT</span></div>
-          <ul class="todo"><li>⚠ Land ~22:00, fly out 06:15 — short turnaround</li><li>Airport hotel; be back at Int'l by ~03:15</li><li>~3–4 hrs' rest, then straight to New Zealand</li></ul>
-        </div>
-      </div>
+    <div class="band"><h2><span class="flag"></span>Australia</h2><span class="dates">25 OCT &ndash; 6 NOV &middot; 13 nts</span></div>
+    <div class="line-list"><div class="rail"></div>
+      <div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Sydney</div><div class="when">25–26 Oct &amp;middot; arrive</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li><b>25 Oct:</b> arrive ~10:35 — Opera House, Circular Quay, The Rocks</li><li><b>26 Oct: Blue Mountains full-day tour</b> — 7:30am pickup; Echo Point, Three Sisters, Scenic World</li></ul><div class="hikes"><div class="ht">&#129406; Hike options — Blue Mountains (26 Oct)</div><ul><li><span class="nm"><b>Giant Stairway + Federal Pass</b> · moderate, 900+ steps</span><span class="mi">3.1 mi</span></li><li><span class="nm"><b>Wentworth Falls</b> Track · moderate</span><span class="mi">2.9 mi</span></li><li><span class="nm"><b>Grand Canyon</b> loop (Blackheath) · moderate</span><span class="mi">3.7 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Mad Monkey on Broadway</div><div class="stay-addr">20 City Rd, Sydney 2008 · 1 guest</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">25 Oct</div><div class="io-s">Sun · from ~14:00</div></div><div><div class="io-l">Check out</div><div class="io-v">27 Oct</div><div class="io-s">Tue · 2 nights</div></div></div><div class="stay-note">Land ~10:35 — ask for early check-in or bag drop. &#9888; Very early start on the 27th (JQ950 at 06:20).</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Opera+House" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">JQ950 &middot; Jetstar</span><span class="fmeta2">Domestic<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">06:20</div><div class="fc">SYD &amp;middot; T2</div><div class="fd">Tue 27 Oct</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">3h 00m</div></div><div class="fend right"><div class="ft">08:20</div><div class="fc">CNS &amp;middot; T2</div><div class="fd">Tue 27 Oct</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; ref MJ3BQL</div><div class="fnote warn">&#9888; <b>No checked bag included</b> &mdash; add ~23 kg online in advance (cheaper than at the airport). Early start: leave for SYD T2 by ~04:30.</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Cairns</div><div class="when">27–30 Oct</div></div><span class="nights">4 NTS</span></div><ul class="todo"><li>Great Barrier Reef — full-day snorkel/dive</li><li>Daintree &amp; Cape Tribulation</li><li>Kuranda via the Skyrail cableway</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Cairns hostel — 8 Scott Street</div><div class="stay-addr">8 Scott Street, Cairns 4870 · 1 adult · bed in 4-bed mixed dorm, shared bathroom</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">27 Oct</div><div class="io-s">Tue · 11:00–24:00</div></div><div><div class="io-l">Check out</div><div class="io-v">31 Oct</div><div class="io-s">Sat · 4 nights</div></div></div><div class="stay-note">&#9888; Flight on the 31st departs <b>06:50</b> — you&rsquo;ll leave ~04:45, before the 01:00 checkout window opens. Tell reception you&rsquo;re doing an early departure. Central for tour pickups.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cairns+Queensland" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cairns+Great+Barrier+Reef+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">QF1819 &middot; Qantas</span><span class="fmeta2">Domestic<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">06:50</div><div class="fc">CNS &amp;middot; T2</div><div class="fd">Sat 31 Oct</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">3h 00m</div></div><div class="fend right"><div class="ft">10:50</div><div class="fc">SYD &amp;middot; T3</div><div class="fd">Sat 31 Oct</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; ref E4KK42 &middot; e-tkt 081-2392124061 &middot; bag 1&times;23 kg</div><div class="fnote ok">Lands SYD <b>T3</b> at 10:50 &mdash; drop bags, then a relaxed city afternoon.</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Sydney</div><div class="when">31 Oct &amp;middot; fly in from Cairns</div></div><span class="nights">1 NT</span></div><ul class="todo"><li>Morning flight Cairns → Sydney (~10:00); drop bags</li><li>Relaxed city — Harbour Bridge, The Rocks, Bondi Beach</li><li>Easy evening (early Hobart flight tomorrow)</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Darlinghurst hostel — 304 Victoria St</div><div class="stay-addr">304 Victoria Street, Darlinghurst 2010 · 1 adult · bed in 4-bed mixed dorm (18–35)</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">31 Oct</div><div class="io-s">Sat · 14:00–23:30</div></div><div><div class="io-l">Check out</div><div class="io-v">1 Nov</div><div class="io-s">Sun · by 10:00</div></div></div><div class="stay-note">&#9888; Checkout is <b>10:00</b> — fine for a midday Hobart flight, but check your departure time. Darlinghurst is ~15 min to the CBD; airport via Kings Cross station.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sydney+Harbour+Bridge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Sydney+Australia+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">JQ719 &middot; Jetstar</span><span class="fmeta2">Domestic<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">06:00</div><div class="fc">SYD</div><div class="fd">Sun 1 Nov</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">1h 50m</div></div><div class="fend right"><div class="ft">07:50</div><div class="fc">HBA</div><div class="fd">Sun 1 Nov</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; ref KQRVHQ</div><div class="fnote warn">&#9888; 06:00 departure &mdash; leave Darlinghurst ~04:00, before the hostel&rsquo;s stated checkout. Tell reception you&rsquo;re going pre-dawn. Check whether a bag is included. &#10003; Upside: lands 07:50, so you get a <b>full day in Hobart</b>.</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Hobart · Tasmania</div><div class="when">1–2 Nov</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li><b>1 Nov:</b> land 07:50 — head straight to <b>Farm Gate Market</b>, Bathurst St (Sun only, 8:30am–1pm) for brunch at the Grub Hub</li><li>Then <b>MONA</b> (closed Tue, so do it today) + kunanyi/Mt Wellington summit</li><li><b>2 Nov: Port Arthur</b> convict site day trip (~90 min each way)</li><li>Salamanca Place waterfront in the evenings</li><li class="wild">&#9670; Bonorong Sanctuary — wombats, devils</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Narrara Backpackers Hobart</div><div class="stay-addr">88 Goulburn Street, Hobart 7000 · ~10 min walk to Farm Gate Market &amp; Salamanca</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">1 Nov</div><div class="io-s">Sun · from 14:00</div></div><div><div class="io-l">Check out</div><div class="io-v">3 Nov</div><div class="io-s">Tue · before 10:00 · 2 nights</div></div></div><div class="stay-note">&#10003; Dates corrected to <b>1&ndash;3 Nov</b>.<br>&#128663; Pick up the Tasmania rental car at Hobart Airport (~08:30, straight off JQ719). Check-in isn&rsquo;t until 14:00, so do the market and MONA first and drop bags after.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hobart+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Hobart+Tasmania+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Hobart &rarr; Freycinet &middot; ~2.5 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Freycinet</div><div class="when">3–4 Nov</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li>Wineglass Bay; Bay of Fires</li><li class="wild">&#9670; Maria Island day — wombats &amp; wallabies</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Wineglass Bay Lookout</b> · moderate</span><span class="mi">1.7 mi</span></li><li><span class="nm"><b>Wineglass + Hazards</b> circuit · half-day</span><span class="mi">6.8 mi</span></li><li><span class="nm"><b>Mt Amos</b> · steep scramble</span><span class="mi">2.5 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Coles Bay House</div><div class="stay-addr">24 Freycinet Drive, Coles Bay TAS 7215 · +61 407 729 404 · conf. 1172838847</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">3 Nov</div><div class="io-s">Tue · from 14:00</div></div><div><div class="io-l">Check out</div><div class="io-v">5 Nov</div><div class="io-s">Thu · 2 nights</div></div></div><div class="stay-note">Minutes from the Freycinet park entrance. &#9888; <b>4 Nov is the Maria Island day</b> — the ferry leaves from Triabunna, ~1 hr south, so plan a ~07:45 start. No shops on the island: pack lunch here the night before.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Freycinet+National+Park+Wineglass+Bay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Freycinet+Wineglass+Bay+Tasmania+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Freycinet &rarr; Cradle Mtn &middot; ~4 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Cradle Mountain</div><div class="when">5 Nov</div></div><span class="nights">1 NT</span></div><ul class="todo"><li>Dove Lake, alpine wildlife (wombats at dusk)</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Dove Lake Circuit</b> · easy, the classic</span><span class="mi">3.7 mi</span></li><li><span class="nm"><b>Marions Lookout</b> · moderate–steep</span><span class="mi">4.7 mi</span></li><li><span class="nm"><b>Cradle Summit</b> · hard, scrambling</span><span class="mi">8 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Discovery Parks — Cradle Mountain</div><div class="stay-addr">3832 Cradle Mountain Road, Cradle Mountain 7306 · conf. 6473545534</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">5 Nov</div><div class="io-s">Thu · from 14:00</div></div><div><div class="io-l">Check out</div><div class="io-v">6 Nov</div><div class="io-s">Fri · before 10:00 · 1 night</div></div></div><div class="stay-note">Near the visitor centre — the Dove Lake shuttle (free with your Parks Pass, every 15 min, 8am–6pm) leaves from there; private cars can&rsquo;t use Dove Lake Rd in those hours. Communal kitchen — bring food, dining options are sparse. Cold nights, possible snow. Dusk = wombats.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cradle+Mountain+Tasmania" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Cradle+Mountain+Tasmania+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Cradle Mtn &rarr; Launceston &middot; ~1.5 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Launceston</div><div class="when">6 Nov &amp;middot; day only</div></div><span class="nights">DAY</span></div><ul class="todo"><li>Cataract Gorge &amp; Tamar Valley by day</li><li>Drop the car, then the night flight out</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-none">NO STAY</span></div><div class="stay-name">No accommodation — night flight to Sydney</div><div class="stay-addr">Drop rental car at Launceston Airport</div><div class="stay-note">You fly out ~20:30 tonight; next bed is the Sydney airport hotel.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Launceston+Tasmania+Cataract+Gorge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Launceston+Tasmania+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">JQ750 &middot; Jetstar</span><span class="fmeta2">Domestic &middot; NIGHT<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">20:30</div><div class="fc">LST</div><div class="fd">Fri 6 Nov &amp;middot; confirmed</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">1h 35m</div></div><div class="fend right"><div class="ft">22:05</div><div class="fc">SYD &amp;middot; T2</div><div class="fd">Fri 6 Nov</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; PNR ATLC8E (ref ASZUKK) &middot; A320 &middot; no meals</div><div class="fnote warn">&#9888; <b>No free checked baggage</b> &mdash; add a bag online in advance. Lands <b>SYD T2</b> at 22:05; the airport hotel shuttle is a short hop, then back at International by ~03:15 for the 06:15 Queenstown flight.</div></div></div><div class="stop"><span class="dot"></span><div class="card dash"><div class="card-top"><div><div class="place">Sydney · overnight transit</div><div class="when">6 Nov &amp;middot; airport hotel</div></div><span class="nights">TIGHT</span></div><ul class="todo"><li>&#9888; Land ~22:00, fly out 06:15 — short turnaround</li><li>Be back at International by ~03:15</li><li>~3–4 hrs' rest, then straight to New Zealand</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Sydney &mdash; 43 Innesdale Road</div><div class="stay-addr">43 Innesdale Rd, Arncliffe/Wolli Creek 2205 &middot; 1 adult &middot; small single room</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">6 Nov</div><div class="io-s">Fri · 14:00–23:00</div></div><div><div class="io-l">Check out</div><div class="io-v">7 Nov</div><div class="io-s">Sat · from 01:00</div></div></div><div class="stay-note">&#9888; <b>Tight check-in:</b> reception closes at <b>23:00</b> and JQ750 lands 22:05 at T2 &mdash; only ~55 min. <b>Tell the property you&rsquo;re arriving late</b> and get after-hours / self check-in instructions before you fly.<br>&#10003; Checkout opens 01:00, so your ~03:15 departure is fine. ~10 min by cab to <b>T1</b> &mdash; no trains that early. ~4 km from the airport.</div></div></div></div>
     </div>
   </section>
 
-  <div class="tasman">
-    <svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg>
-    <div><div class="t1">Trans-Tasman flight</div><div class="t2">Sydney 06:15 → Queenstown 11:10 · 7 Nov</div></div>
-  </div>
+  <div class="tasman"><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight intl"><div class="fhead"><span class="fnum">Sydney &rarr; Queenstown</span><span class="fmeta2">Trans-Tasman<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">06:15</div><div class="fc">SYD</div><div class="fd">Sat 7 Nov</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">2h 55m</div></div><div class="fend right"><div class="ft">11:10</div><div class="fc">ZQN</div><div class="fd">Sat 7 Nov</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; exit from Australia</div></div></div></div>
 
-  <!-- ===================== NEW ZEALAND ===================== -->
   <section class="nz-c">
-    <div class="band"><h2><span class="flag"></span>New Zealand</h2><span class="dates">7 – 27 NOV · 21 nts · East route</span></div>
-    <div class="line-list">
-      <div class="rail"></div>
-
-      <!-- Queenstown -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Queenstown</div><div class="when">7–12 Nov · South Island</div></div><span class="nights">6 NTS</span></div>
-          <ul class="todo"><li>Arrive 11:10 (7 Nov) — easy first afternoon after the red-eye</li><li><b>Both sounds by coach (no car):</b> Milford full-day cruise + Doubtful Sound overnight cruise</li><li>Gondola + luge; bungy; Shotover jet; Arrowtown &amp; Glenorchy</li></ul>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Queenstown Hill</b> · moderate</span><span class="mi">3 mi</span></li>
-            <li><span class="nm"><b>Ben Lomond</b> · strenuous alpine, 6–8 hr</span><span class="mi">7 mi</span></li>
-            <li><span class="nm"><b>Key Summit</b> (Milford day) · moderate</span><span class="mi">2.1 mi</span></li>
-          </ul></div>
-          <div class="tags"><span class="tag">🏨 Booked: <b>Adventure Queenstown Hostel</b>, 36 Camp St · 7–13 Nov</span><span class="tag">🚶 Car-free — pick up Car A on 13 Nov</span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Queenstown+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Queenstown+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Pick up Car A</b> in Queenstown, then <b>drive</b> → Wānaka · ~1 hr · 13 Nov</div></div>
-
-      <!-- Wanaka -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Wānaka</div><div class="when">13 Nov</div></div><span class="nights">1 NT</span></div>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Roys Peak</b> · ~4,100 ft up, 5–6 hr, the ridge shot</span><span class="mi">10 mi</span></li>
-            <li><span class="nm"><b>Rob Roy Glacier</b> · moderate</span><span class="mi">6 mi</span></li>
-            <li><span class="nm"><b>Diamond Lake</b> / Rocky Mtn · moderate</span><span class="mi">4.5 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wanaka+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wanaka+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> W&#257;naka &#8594; Aoraki/Mt Cook &middot; ~3 hrs</div></div>
-
-      <!-- Aoraki / Mt Cook -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Aoraki / Mt Cook</div><div class="when">14 Nov</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>NZ&#8217;s highest peak; turquoise Lake Pukaki en route</li><li>Dark Sky Reserve &#8212; superb stargazing</li></ul>
-          <div class="hikes"><div class="ht">&#129406; Hike options</div><ul>
-            <li><span class="nm"><b>Hooker Valley Track</b> &middot; easy&#8211;moderate, 3 hr, glacial lake</span><span class="mi">6.2 mi</span></li>
-            <li><span class="nm"><b>Kea Point</b> &middot; easy, moraine viewpoint</span><span class="mi">2.2 mi</span></li>
-            <li><span class="nm"><b>Sealy Tarns</b> &middot; steep, ~2,200 steps</span><span class="mi">2.3 mi</span></li>
-            <li><span class="nm"><b>Mueller Hut</b> &middot; hard, full day</span><span class="mi">6.5 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Aoraki+Mount+Cook+National+Park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Aoraki+Mount+Cook+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Mt Cook &#8594; Lake Tekapo &middot; ~1 hr</div></div>
-
-      <!-- Lake Tekapo -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Lake Tekapo</div><div class="when">15 Nov</div></div><span class="nights">1 NT</span></div>
-          <ul class="todo"><li>Church of the Good Shepherd; unreal turquoise lake</li><li>Mt John Observatory stargazing tour (book ahead)</li><li>Tekapo Springs hot pools</li></ul>
-          <div class="hikes"><div class="ht">&#129406; Hike</div><ul>
-            <li><span class="nm"><b>Mt John Summit Circuit</b> &middot; moderate, lake panorama</span><span class="mi">4.7 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Lake+Tekapo+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Lake+Tekapo+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> Tekapo &#8594; Kaik&#333;ura, stopping in <b>Christchurch</b> &middot; ~5 hrs</div></div>
-
-      <!-- Kaikoura -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Kaik&#333;ura</div><div class="when">16&#8211;17 Nov</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li class="wild">&#9670; Whale watching (year-round sperm whales)</li><li class="wild">&#9670; Dusky dolphins &amp; the Point Kean seal colony</li><li>Famous crayfish; Christchurch Botanic Gardens en route</li></ul>
-          <div class="hikes"><div class="ht">&#129406; Hike options</div><ul>
-            <li><span class="nm"><b>Peninsula Walkway</b> &middot; easy&#8211;moderate, clifftop + seals</span><span class="mi">7 mi</span></li>
-            <li><span class="nm"><b>Point Kean seal colony</b> &middot; easy shoreline</span><span class="mi">1 mi</span></li>
-          </ul></div>
-          <div class="tags"><span class="tag">&#128663; Car A drop: <b>Picton</b> (18 Nov)</span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kaikoura+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Kaikoura+New+Zealand+whale+watching" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M5 14l1.5-6h11L19 14M5 14h14M12 4v4"/></svg></span><div class="htext"><b>Drive</b> Kaikōura → Picton (~2.5 hrs), drop car · <b>Ferry</b> → Wellington ~3.5 hrs · 18 Nov</div></div>
-
-      <!-- Wellington -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Wellington</div><div class="when">18–19 Nov · North Island</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Te Papa (free); Weta Workshop tour</li><li>Cable car & Cuba Street</li></ul>
-          <div class="tags"><span class="tag">🚗 Car B pickup: <b>Wellington</b></span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wellington+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wellington+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Tongariro · ~4.5 hrs</div></div>
-
-      <!-- Tongariro -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Tongariro</div><div class="when">20–21 Nov</div></div><span class="nights">2 NTS</span></div>
-          <div class="hikes"><div class="ht">🥾 Hike options</div><ul>
-            <li><span class="nm"><b>Alpine Crossing</b> · one-way, 7–8 hr, shuttle needed</span><span class="mi">12.4 mi</span></li>
-            <li><span class="nm"><b>Taranaki Falls</b> loop · easy–moderate</span><span class="mi">3.7 mi</span></li>
-            <li><span class="nm"><b>Tama Lakes</b> · moderate</span><span class="mi">10.5 mi</span></li>
-          </ul></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> to Rotorua · ~2.5 hrs</div></div>
-
-      <!-- Rotorua -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Rotorua</div><div class="when">22–23 Nov</div></div><span class="nights">2 NTS</span></div>
-          <ul class="todo"><li>Geothermal parks; Māori hāngī evening</li><li>Waitomo glowworm caves day trip</li></ul>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Rotorua+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Rotorua+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hop"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="htext"><b>Drive</b> via <b>Hobbiton</b> tour → Auckland · 24 Nov</div></div>
-
-      <!-- Auckland -->
-      <div class="stop"><span class="dot"></span>
-        <div class="card">
-          <div class="card-top"><div><div class="place">Auckland</div><div class="when">24–27 Nov · finish</div></div><span class="nights">4 NTS</span></div>
-          <ul class="todo"><li>Hobbiton movie set en route</li><li>Waiheke Island wineries; Sky Tower</li><li>Buffer day before the flight home</li></ul>
-          <div class="tags"><span class="tag">🚗 Car B drop: <b>Auckland</b></span></div>
-          <div class="acts">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Auckland+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a>
-            <a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Auckland+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">▶</span> Top reel</a>
-          </div>
-        </div>
-      </div>
+    <div class="band"><h2><span class="flag"></span>New Zealand</h2><span class="dates">7 &ndash; 27 NOV &middot; 21 nts</span></div>
+    <div class="line-list"><div class="rail"></div>
+      <div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Queenstown</div><div class="when">7–12 Nov &amp;middot; South Island</div></div><span class="nights">6 NTS</span></div><ul class="todo"><li>Arrive 11:10 (7 Nov) — easy first afternoon after the red-eye</li><li>&#9989; <b>8 Nov — Milford Sound</b> &middot; Cruise Milford small boutique tour + picnic lunch &middot; conf. 377941499 &middot; back ~19:30&ndash;20:00<br><b>&#128205; Pickup 06:30 at The Station &mdash; Home of Adventure.</b> Wait in front of <b>Cafe Marmolada</b>, opposite side of the road from Lylo. ~5 min walk from the hostel on Camp St.</li><li><b>10–11 Nov — Doubtful Sound</b> overnight cruise (sleep aboard)</li><li><b>12 Nov —</b> Arrowtown, Glenorchy &amp; Gibbston wineries</li><li>Gondola + luge; bungy; Shotover jet</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Queenstown Hill</b> · moderate</span><span class="mi">3 mi</span></li><li><span class="nm"><b>Ben Lomond</b> · strenuous alpine, 6–8 hr</span><span class="mi">7 mi</span></li><li><span class="nm"><b>Key Summit</b> (Milford day) · moderate</span><span class="mi">2.1 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Adventure Queenstown Hostel</div><div class="stay-addr">Level 1, 36 Camp Street · 1 guest</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">7 Nov</div><div class="io-s">Sat · from ~14:00</div></div><div><div class="io-l">Check out</div><div class="io-v">13 Nov</div><div class="io-s">Fri · 6 nights</div></div></div><div class="stay-note">&#128666; <b>Car-free</b> — both sounds go by coach; pick up Car A on 13 Nov. On 10 Nov you sleep on the Doubtful boat; the hostel holds your main luggage.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Queenstown+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Queenstown+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Coach</b> Queenstown ~08:00 &rarr; Manapouri &middot; check in 11:30, sail 12:00 &middot; 10 Nov</div></div></div><div class="stop"><span class="dot"></span><div class="card dash"><div class="card-top"><div><div class="place">Doubtful Sound</div><div class="when">10 Nov &amp;middot; overnight cruise</div></div><span class="nights">ABOARD</span></div><ul class="todo"><li>Coach transfer from Queenstown via Manapouri</li><li>Cruise the fiord — dinner &amp; dawn on the water</li><li>Back to Queenstown midday on 11 Nov</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Doubtful Sound Overnight &mdash; The Wanderer</div><div class="stay-addr">RealNZ, 64 Waiau Street, Pearl Harbour, Manapouri 9643 &middot; conf. #377829009</div><div class="inout"><div><div class="io-l">Departs</div><div class="io-v">10 Nov</div><div class="io-s">Tue · 12:00 · check in 11:30</div></div><div><div class="io-l">Returns</div><div class="io-v">11 Nov</div><div class="io-s">Wed · 12:15</div></div></div><div class="stay-note">&#9888; <b>Confirm the Queenstown coach is included</b> &mdash; RealNZ sells this with transfers from Queenstown, from Te Anau, or make-your-own-way. You have <b>no car until 13 Nov</b>, so you need the Queenstown coach (leaves ~08:00&ndash;08:30 for the 2.5&ndash;3 hr trip).<br>Route: Manapouri &rarr; 45-min boat across the lake &rarr; 45-min coach over Wilmot Pass &rarr; Deep Cove. You <b>cannot drive to the fiord</b>. One carry-on only &mdash; the hostel holds your main bag. Cashless onboard, bring a card.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Doubtful+Sound+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Doubtful+Sound+overnight+cruise" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Pick up Car A</b> in Queenstown, then <b>drive</b> &rarr; W&#257;naka &middot; ~1 hr &middot; 13 Nov</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Wānaka</div><div class="when">13 Nov</div></div><span class="nights">1 NT</span></div><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Roys Peak</b> · ~4,100 ft up, 5–6 hr</span><span class="mi">10 mi</span></li><li><span class="nm"><b>Rob Roy Glacier</b> · moderate</span><span class="mi">6 mi</span></li><li><span class="nm"><b>Diamond Lake</b> / Rocky Mtn · moderate</span><span class="mi">4.5 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Adventure Wānaka Hostel</div><div class="stay-addr">56 Brownston Street, W&#257;naka 9300 &middot; 1 guest &middot; central, ~2 min to the lakefront</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">13 Nov</div><div class="io-s">Fri</div></div><div><div class="io-l">Check out</div><div class="io-v">14 Nov</div><div class="io-s">Sat · 1 night</div></div></div><div class="stay-note">&#128663; Pick up <b>Car A</b> in Queenstown this morning, then drive the <b>Crown Range</b> (~1 hr, NZ&rsquo;s highest sealed road &mdash; stop at the lookout).<br>Half-day only: <b>Diamond Lake</b> (4.5 mi, ~2 hr) fits; <b>Roys Peak</b> (10 mi, 5&ndash;6 hr) does not from a midday start.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wanaka+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wanaka+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> W&#257;naka &rarr; Aoraki/Mt Cook &middot; ~3 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Aoraki / Mt Cook</div><div class="when">14 Nov</div></div><span class="nights">1 NT</span></div><ul class="todo"><li>NZ's highest peak; turquoise Lake Pukaki en route</li><li>Dark Sky Reserve — superb stargazing</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Hooker Valley Track</b> · easy–moderate, 3 hr</span><span class="mi">6.2 mi</span></li><li><span class="nm"><b>Kea Point</b> · easy</span><span class="mi">2.2 mi</span></li><li><span class="nm"><b>Sealy Tarns</b> · steep, ~2,200 steps</span><span class="mi">2.3 mi</span></li><li><span class="nm"><b>Mueller Hut</b> · hard, full day</span><span class="mi">6.5 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Haka House Aoraki Mt Cook</div><div class="stay-addr">Mt Cook Village &middot; bed in 8-bed dorm &middot; 1 adult &middot; conf. 82830 &middot; NZ$180.20</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">14 Nov</div><div class="io-s">Sat</div></div><div><div class="io-l">Check out</div><div class="io-v">15 Nov</div><div class="io-s">Sun · 1 night</div></div></div><div class="stay-note">&#10003; In the village &mdash; <b>Hooker Valley Track</b> and Kea Point start minutes away, no extra driving.<br>&#9888; They&rsquo;ve asked you to <b>add your details online before arrival</b> to speed up check-in.<br>&#127775; Mackenzie is an International Dark Sky Reserve &mdash; step outside after dark.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Aoraki+Mount+Cook+National+Park" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Aoraki+Mount+Cook+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Mt Cook &rarr; Lake Tekapo &middot; ~1 hr</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Lake Tekapo</div><div class="when">15 Nov</div></div><span class="nights">1 NT</span></div><ul class="todo"><li>Church of the Good Shepherd; turquoise lake</li><li>Mt John Observatory stargazing (book ahead)</li><li>Tekapo Springs hot pools</li></ul><div class="hikes"><div class="ht">&#129406; Hike</div><ul><li><span class="nm"><b>Mt John Summit Circuit</b> · moderate</span><span class="mi">4.7 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Haka House Tekapo</div><div class="stay-addr">5 Motuariki Lane, Lake Tekapo 7999 &middot; 1 guest &middot; walk to the lakefront &amp; Church of the Good Shepherd</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">15 Nov</div><div class="io-s">Sun</div></div><div><div class="io-l">Check out</div><div class="io-v">16 Nov</div><div class="io-s">Mon · 1 night</div></div></div><div class="stay-note">&#127775; <b>Book the Mt John stargazing tour</b> for tonight &mdash; capped numbers, weather-dependent, and you&rsquo;re only here one night.<br>&#128663; Short drive from Mt Cook (~1 hr) &mdash; arrive early enough for the Mt John Summit Circuit (4.7 mi) in the afternoon.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Lake+Tekapo+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Lake+Tekapo+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Tekapo &rarr; Kaik&#333;ura via <b>Christchurch</b> &middot; ~5 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Kaikōura</div><div class="when">16–17 Nov</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li class="wild">&#9670; Whale watching (year-round sperm whales)</li><li class="wild">&#9670; Dusky dolphins &amp; Point Kean seal colony</li><li>Crayfish; Christchurch Botanic Gardens en route</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Peninsula Walkway</b> · easy–moderate, clifftop + seals</span><span class="mi">7 mi</span></li><li><span class="nm"><b>Point Kean seal colony</b> · easy shoreline</span><span class="mi">1 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Heays Lane Cottage</div><div class="stay-addr">140 Esplanade, Kaik&#333;ura 7300 &middot; +64 27 768 5827 &middot; conf. 6873304907 &middot; on the seafront</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">16 Nov</div><div class="io-s">Mon · from 12:00</div></div><div><div class="io-l">Check out</div><div class="io-v">18 Nov</div><div class="io-s">Wed · before 10:00 · 2 nights</div></div></div><div class="stay-note">&#10003; <b>10:00 checkout on the 18th works perfectly</b> &mdash; ferry check-in isn&rsquo;t until 13:15, so it&rsquo;s an easy ~2.5 hr drive to Picton.<br>&#128034; The Peninsula Walkway (7 mi) and Point Kean seal colony start from the Esplanade end of town.<br>&#128011; Book whale watching for the <b>morning of the 17th</b>, keeping the afternoon as weather backup.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kaikoura+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Kaikoura+New+Zealand+whale+watching" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M5 14l1.5-6h11L19 14M5 14h14M12 4v4"/></svg></span><div class="flight"><div class="fhead"><span class="fnum">Interislander &middot; Kaitaki</span><span class="fmeta2">Foot passenger &middot; Saver<br>3h 30m</span></div><div class="fbody"><div class="fend"><div class="ft">14:15</div><div class="fc">PICTON</div><div class="fd">Wed 18 Nov</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">~3h 30m</div></div><div class="fend right"><div class="ft">17:45</div><div class="fc">WELLINGTON</div><div class="fd">Wed 18 Nov</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; #69215505 &middot; 1 adult &middot; $92.00 &middot; Saver fare</div><div class="fnote ok">&#10003; <b>Final check-in 13:15.</b> Relaxed morning: check out of Kaik&#333;ura by 10:00, drive ~2.5 hrs to Picton, drop <b>Car A</b> (depots are at/near the terminal), check in with time to spare.</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Wellington</div><div class="when">18–19 Nov &amp;middot; North Island</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li>Ferry lands <b>17:45 on the 18th</b> &mdash; dinner on Cuba St, then a full day on the 19th</li><li>Te Papa (free) &amp; Weta Workshop tour on the 19th</li><li>Cable car &amp; Cuba Street</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">The Marion</div><div class="stay-addr">13&ndash;15 Marion Street, Te Aro, Wellington 6011 &middot; +64 27 284 3887 &middot; conf. 287010-579891989</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">18 Nov</div><div class="io-s">Wed · 17:45, off the ferry</div></div><div><div class="io-l">Check out</div><div class="io-v">20 Nov</div><div class="io-s">Fri · 2 nights</div></div></div><div class="stay-note">&#10003; Extended to <b>2 nights (18&ndash;20 Nov)</b> &mdash; covers your full Wellington day on the 19th.<br>&#128663; No car needed in the city. Te Aro is central &mdash; walk to Cuba St, Te Papa and the Weta shuttle pickup. Collect <b>Car B</b> on the 20th.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Wellington+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Wellington+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Wellington &rarr; Tongariro &middot; ~4.5 hrs &middot; Car B</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Tongariro</div><div class="when">20–21 Nov</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li>&#9989; <b>DOC Crossing booking confirmed</b> &mdash; Sat 21 Nov, 1 person. &#9888; Rangers check it at the carpark: <b>save the email offline</b> (digital or paper).</li><li>&#9744; Still need the <b>shuttle</b> &mdash; 4-hr parking limit at both road ends</li></ul><div class="hikes"><div class="ht">&#129406; Hike options</div><ul><li><span class="nm"><b>Alpine Crossing</b> · one-way, 7–8 hr, shuttle needed</span><span class="mi">12.4 mi</span></li><li><span class="nm"><b>Taranaki Falls</b> loop · easy–moderate</span><span class="mi">3.7 mi</span></li><li><span class="nm"><b>Tama Lakes</b> · moderate</span><span class="mi">10.5 mi</span></li></ul></div><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Skotel Alpine Resort</div><div class="stay-addr">1 Ngauruhoe Pl, Whakapapa Village, Mt Ruapehu 3951 &middot; +64 7 892 3719</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">20 Nov</div><div class="io-s">Fri · from 15:00</div></div><div><div class="io-l">Check out</div><div class="io-v">22 Nov</div><div class="io-s">Sun · 2 nights</div></div></div><div class="stay-note">&#9888; <b>Payment not yet taken</b> &mdash; confirm with the hotel.<br>&#9888; <b>Shuttle check:</b> you&rsquo;re in <b>Whakapapa Village</b>, but Tongariro Crossing Shuttles departs <b>National Park Village</b> (~20 min / 15 km). Ask Skotel which operator picks up from Whakapapa, or drive Car B to National Park Village for the day (no parking limit there).<br>&#10003; Bonus: the <b>Taranaki Falls</b> loop (3.7 mi) starts in Whakapapa Village &mdash; your bad-weather plan B, straight from the door.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Tongariro+Alpine+Crossing" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Tongariro &rarr; Rotorua &middot; ~2.5 hrs</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Rotorua</div><div class="when">22–23 Nov</div></div><span class="nights">2 NTS</span></div><ul class="todo"><li>Geothermal parks; Māori hāngī evening</li><li>Waitomo glowworm caves day trip</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-booked">BOOKED</span></div><div class="stay-name">Koutu Beach Bed &amp; Breakfast</div><div class="stay-addr">105 Koutu Road, Kawaha Point, Rotorua 3010 &middot; +64 7 346 1230 &middot; conf. 5345577143 &middot; on Lake Rotorua</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">22 Nov</div><div class="io-s">Sun · from 15:00</div></div><div><div class="io-l">Check out</div><div class="io-v">24 Nov</div><div class="io-s">Tue · before 11:00 · 2 nights</div></div></div><div class="stay-note">&#9888; <b>11:00 checkout vs the 10:30 Hobbiton tour</b> &mdash; you leave ~09:15 on the 24th, so settle up the night before.<br>&#128664; Kawaha Point is ~10 min from central Rotorua &mdash; fine with Car B, but geothermal parks and h&#257;ng&#299; venues are a drive, not a walk.<br>Arriving 15:00 on the 22nd after the ~2.5 hr drive from Tongariro, the day after the Crossing &mdash; take it easy.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Rotorua+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Rotorua+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div><div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13m-14 0h14m-14 0v4m14-4v4"/></svg></span><div class="flight drive"><div class="drivetext"><b>Drive</b> Rotorua ~09:15 &rarr; <b>Hobbiton 10:30</b> (Shire&rsquo;s Rest) &rarr; Auckland &middot; 24 Nov</div></div></div><div class="stop"><span class="dot"></span><div class="card "><div class="card-top"><div><div class="place">Auckland</div><div class="when">24–27 Nov &amp;middot; finish</div></div><span class="nights">4 NTS</span></div><ul class="todo"><li>&#9989; <b>Hobbiton 10:30am</b> Signature Departure, 24 Nov &mdash; The Shire&rsquo;s Rest, 501 Buckland Rd, Matamata &middot; ref 3569980. ~1 hr from Rotorua, 2 hr tour, then ~2 hr to Auckland</li><li>Waiheke Island wineries; Sky Tower</li><li>Buffer day before the flight home</li></ul><div class="stay"><div class="stay-head"><span class="sh-l">&#128716; Accommodation</span><span class="stay-status st-tobook">TO BOOK</span></div><div class="stay-name">Auckland — CBD / Viaduct</div><div class="stay-addr">Central, walk to the ferry terminal for Waiheke</div><div class="inout"><div><div class="io-l">Check in</div><div class="io-v">24 Nov</div><div class="io-s">Tue</div></div><div><div class="io-l">Check out</div><div class="io-v">28 Nov</div><div class="io-s">Sat · 4 nights</div></div></div><div class="stay-note">&#128663; Drop Car B in Auckland. Evening flight on the 28th — arrange late checkout or bag storage.</div></div><div class="acts"><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&amp;query=Auckland+New+Zealand" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Maps</a><a class="btn btn-yt" href="https://www.youtube.com/results?search_query=Auckland+New+Zealand+travel" target="_blank" rel="noopener"><span class="play">&#9654;</span> Top reel</a></div></div></div>
     </div>
   </section>
 
-  <div class="flight ret">
-    <div class="ihead">
-      <span class="fnum"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg> NZ008 · Air New Zealand</span>
-      <span class="fdur">Flying home<br>12h 10m · Economy</span>
-    </div>
-    <div class="fleg">
-      <span class="fdot"></span>
-      <div class="ftime">19:55</div>
-      <div class="fwhere">
-        <div class="fcodeline"><b>AKL</b> Auckland</div>
-        <div class="fsub">DEPART · Sat 28 Nov · Terminal I</div>
-      </div>
-    </div>
-    <div class="frail"><span class="fdlabel">✈ 12h 10m · date line gains a day back</span></div>
-    <div class="fleg">
-      <span class="fdot"></span>
-      <div class="ftime">11:05</div>
-      <div class="fwhere">
-        <div class="fcodeline"><b>SFO</b> San Francisco <span class="fplus same">same day</span></div>
-        <div class="fsub">ARRIVE · Sat 28 Nov · Terminal I</div>
-      </div>
-    </div>
-    <div class="fmeta">Ref <span class="code">KZM8SH</span> · e-tkt 086-4827995111 · bag 1×23 kg</div>
-    <div class="okline">✓ Matches the plan — you're in Auckland (last night 27 Nov); the evening departure leaves most of 28 Nov free.</div>
-  </div>
+  <div class="leg"><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-7 13-2-6-6-2z"/></svg></span><div class="flight intl"><div class="fhead"><span class="fnum">NZ008 &middot; Air New Zealand</span><span class="fmeta2">Flying home<br>Economy</span></div><div class="fbody"><div class="fend"><div class="ft">19:55</div><div class="fc">AKL</div><div class="fd">Sat 28 Nov &amp;middot; Term I</div></div><div class="fmid"><svg viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></svg><div class="fdur">12h 10m</div></div><div class="fend right"><div class="ft">11:05</div><div class="fc">SFO</div><div class="fd">Sat 28 Nov &amp;middot; same day</div></div></div><div class="fbook">&#9989; <b>Booked</b> &middot; ref KZM8SH &middot; e-tkt 086-4827995111 &middot; bag 1&times;23 kg</div><div class="fnote ok">&#10003; Evening departure leaves most of 28 Nov free in Auckland.</div></div></div>
 
-  <footer><p>◆ = notable wild wildlife · Tasmania has wombats &amp; wallabies (no koalas)<br>
-  Cars: Tasmania (Hobart→Launceston) · South Island (Queenstown→Picton) · North Island (Wellington→Auckland)<br>
-  Tap <b>Maps</b> for the location · tap <b>Top reel</b> for the best videos of each place</p></footer>
+  <div class="chk"><h3>Still to book</h3><div class="sub">A running checklist &mdash; redundant with the cards above on purpose. Priority: <b>BOOK NOW</b> = limited capacity or a hard deadline &middot; <b>SOON</b> = book in the next few weeks &middot; <b>ANYTIME</b> = plenty of availability.</div><div class="chk-group"><div class="gt"><span>Transport</span><span>&#10003; all booked</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Confirm Picton depot for Car A drop<span class="pri p-soon">SOON</span></div><div class="ci-d">Ferry checks in 13:15 on 18 Nov &mdash; easy timing now. Just confirm the depot is at/near the terminal and takes one-way drops from Queenstown.</div></div></div></div><div class="chk-group"><div class="gt"><span>Rental cars &mdash; 3 bookings + prep</span><span>7</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Tasmania car &mdash; one-way<span class="pri p-soon">SOON</span></div><div class="ci-d">Pick up <b>Hobart Airport, Sun 1 Nov ~08:30</b> (straight off JQ719) &middot; drop <b>Launceston Airport, Fri 6 Nov</b> before the ~20:30 flight &middot; ~6 days</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Car A &mdash; South Island one-way<span class="pri p-soon">SOON</span></div><div class="ci-d">Pick up <b>Queenstown, Fri 13 Nov</b> (morning, leaving for W&#257;naka) &middot; drop <b>Picton, Wed 18 Nov</b> before the ferry &middot; ~6 days</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Car B &mdash; North Island one-way<span class="pri p-soon">SOON</span></div><div class="ci-d">Pick up <b>Wellington, Fri 20 Nov</b> &middot; drop <b>Auckland, Sat 28 Nov</b> &middot; ~9 days &middot; allow airport drop-off time before NZ008</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Check one-way / relocation fees<span class="pri p-soon">SOON</span></div><div class="ci-d">All three are one-way rentals &mdash; fees vary a lot by company and climb closer in. Compare Hertz / Avis / Europcar and local NZ firms (Jucy, Apex, GO).</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Licence &amp; International Driving Permit<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">Both countries accept a foreign licence in English; carry an <b>IDP</b> alongside it if yours isn&rsquo;t, and always carry your passport. Under-25 surcharges apply at most firms.</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Insurance &amp; excess reduction<span class="pri p-soon">SOON</span></div><div class="ci-d">Standard excess is often A$/NZ$3,000&ndash;5,000. Decide between the rental firm&rsquo;s excess reduction or your own travel/credit-card cover &mdash; and check <b>gravel roads and ferry transport</b> are permitted.</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Credit card in the driver&rsquo;s name<span class="pri p-ok">ANYTIME</span></div><div class="ci-d">Required for the security bond at pickup &mdash; debit cards are often refused. Make sure it has headroom for the hold.</div></div></div></div><div class="chk-group"><div class="gt"><span>Accommodation &mdash; Australia</span><span>&#10003; all booked</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Arrange late arrival &mdash; 43 Innesdale Rd<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">&#9989; Booked (6 Nov). But check-in closes <b>23:00</b> and you land <b>22:05</b> &mdash; message the property for after-hours entry, and pre-book a cab for ~03:15 to T1.</div></div></div></div><div class="chk-group"><div class="gt"><span>Accommodation &mdash; New Zealand</span><span>1 left</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Auckland &mdash; 4 nights<span class="pri p-soon">SOON</span></div><div class="ci-d">Tue 24 Nov &rarr; 28 Nov &middot; CBD/Viaduct, walk to the Waiheke ferry &middot; ask about late checkout or bag storage for the 19:55 flight</div></div></div></div><div class="chk-group"><div class="gt"><span>Hard to get &mdash; book first</span><span>3</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Confirm Doubtful coach from Queenstown<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">&#9989; Cruise booked (#377829009, The Wanderer). Check your booking includes the <b>Queenstown coach transfer</b> &mdash; you have no car until 13 Nov.</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Great Barrier Reef full-day trip<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">28 Oct from Cairns &middot; outer-reef pontoon or dive boats fill early</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Weta Workshop tour<span class="pri p-soon">SOON</span></div><div class="ci-d">18&ndash;19 Nov, Wellington &middot; small group sizes</div></div></div></div><div class="chk-group"><div class="gt"><span>Permits &amp; entry requirements</span><span>3</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Tongariro shuttle (DOC booking &#10003; done)<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">&#9989; Skotel booked (Whakapapa Village). Book the <b>$75 return</b> shuttle &mdash; departs 5:45/7:15/8:30/9:45am, returns 1:30&ndash;5:30pm. It leaves <b>National Park Village</b>, so confirm pickup from Whakapapa or drive there. Take the <b>7:15am</b>.</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">NZ Visitor Visa + NZ$100 IVL<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">Must be valid from <b>25 Oct</b> &mdash; you clear NZ immigration on the AKL&rarr;SYD self-connect, not just on 7 Nov</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Australia subclass 600 &mdash; attach documents<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">Submitted &middot; add itinerary PDF, funds, onward flights. Watch for a biometrics request (VFS San Francisco)</div></div></div></div><div class="chk-group"><div class="gt"><span>Tours &amp; tickets worth pre-booking</span><span>8</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Blue Mountains full-day tour<span class="pri p-soon">SOON</span></div><div class="ci-d">26 Oct &middot; ~7:30am hotel pickup from Sydney</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Daintree &amp; Cape Tribulation day tour<span class="pri p-soon">SOON</span></div><div class="ci-d">29 Oct from Cairns</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Kuranda Skyrail + Scenic Railway<span class="pri p-soon">SOON</span></div><div class="ci-d">30 Oct &middot; timed boarding slots</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Port Arthur Historic Site<span class="pri p-ok">ANYTIME</span></div><div class="ci-d">2 Nov &middot; add the harbour cruise</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Maria Island ferry<span class="pri p-soon">SOON</span></div><div class="ci-d">4 Nov from Triabunna &middot; limited sailings</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Mt John Observatory stargazing<span class="pri p-soon">SOON</span></div><div class="ci-d">15 Nov, Tekapo &middot; Dark Sky tours cap numbers &middot; weather-dependent</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Kaik&#333;ura whale watching<span class="pri p-soon">SOON</span></div><div class="ci-d">16&ndash;17 Nov &middot; book a morning slot, leave the next day as backup</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">M&#257;ori h&#257;ng&#299; evening &middot; Waitomo caves &middot; Waiheke<span class="pri p-ok">ANYTIME</span></div><div class="ci-d">22&ndash;23 Nov Rotorua &middot; 25 Nov Auckland</div></div></div></div><div class="chk-group"><div class="gt"><span>Small things people forget</span><span>4</span></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Add checked bags to the Jetstar flights<span class="pri p-now">BOOK NOW</span></div><div class="ci-d"><b>JQ950</b> (27 Oct) and <b>JQ750</b> (6 Nov) both include <b>no</b> free checked baggage &mdash; add online, far cheaper than at the airport. Check JQ719 (1 Nov) too.</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Sydney Airport hotel &mdash; refundable rate<span class="pri p-soon">SOON</span></div><div class="ci-d">6 Nov &middot; ~22:30 check-in, ~03:30 out &middot; refundable in case the Launceston flight slips</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Travel insurance<span class="pri p-now">BOOK NOW</span></div><div class="ci-d">Covering hiking, glaciers/alpine, boat trips and the tight self-connect</div></div></div><div class="chk-item"><span class="box"></span><div class="ci-body"><div class="ci-t">Extend Queenstown hostel checkout to 13 Nov<span class="pri p-ok">ANYTIME</span></div><div class="ci-d">&#9989; Done &mdash; Adventure Queenstown Hostel now 7&ndash;13 Nov</div></div></div></div></div>
 
+<div class="tiers">
+  <div class="tiers-head"><div class="th1">What actually sells out</div>
+  <div class="th2">Non-accommodation bookings, ranked by how stuck you&rsquo;d be if you left it. If you only do four things today, do Tier 1.</div></div>
+  <div class="tier"><div class="tier-t"><span class="tier-n t1">TIER 1</span><span class="tier-l">Book this week &middot; limited capacity, no workaround</span></div><ol><li><b>Doubtful Sound overnight cruise</b> &#10003;<span class="d">&#10003; <b>BOOKED</b> &mdash; The Wanderer, 10 Nov 12:00 &rarr; 11 Nov 12:15, conf. #377829009. Just confirm the Queenstown coach is included.</span></li><li><b>Interislander ferry</b> &#10003;<span class="d">&#10003; <b>BOOKED</b> &mdash; Kaitaki, Wed 18 Nov, depart 14:15 arrive 17:45, #69215505. Check in by <b>13:15</b>.</span></li><li><b>Tongariro Crossing &mdash; shuttle</b><span class="d">&#10003; DOC booking <b>confirmed</b> for 21 Nov (save the email &mdash; rangers check it). Still to do: the <b>shuttle</b>, since the 4-hr parking limit at both road ends makes it compulsory. Book it with your National Park Village lodge.</span></li><li><b>Hobbiton</b> &#10003;<span class="d">&#10003; <b>BOOKED</b> &mdash; 10:30am Signature Departure, Tue 24 Nov, Shire&rsquo;s Rest &middot; ref 3569980 / 3305076. Leave Rotorua ~09:15, arrive Auckland mid-afternoon.</span></li></ol></div>
+  <div class="tier"><div class="tier-t"><span class="tier-n t2">TIER 2</span><span class="tier-l">Book within a few weeks</span></div><ol><li>Milford Sound coach-cruise &#10003;<span class="d">&#10003; <b>BOOKED</b> &mdash; Cruise Milford, small boutique tour with picnic lunch, 06:30 pickup 8 Nov &middot; conf. 377941499.</span></li><li>Great Barrier Reef day trip<span class="d">28 Oct &middot; the well-regarded outer-reef boats fill early; booking ahead is about quality, not availability.</span></li><li>Weta Workshop<span class="d">18&ndash;19 Nov &middot; small groups, limited daily slots.</span></li><li>Maria Island ferry (Triabunna)<span class="d">4 Nov &middot; few sailings a day &middot; check in 45 min before &middot; needs a valid Parks Pass.</span></li><li>Mt John Observatory stargazing<span class="d">15 Nov &middot; capped numbers, weather-dependent &mdash; and you&rsquo;re only there one night.</span></li></ol></div>
+  <div class="tier"><div class="tier-t"><span class="tier-n t2">PASSES</span><span class="tier-l">Needed in advance</span></div><ol><li><b>Tasmania Parks Pass</b> &mdash; 2-month holiday pass<span class="d">Covers Freycinet, Maria Island and Cradle Mountain. You <b>cannot check in for the Maria Island ferry</b> without it. Buy online once.</span></li><li><b>NZ Visitor Visa + NZ$100 IVL</b><span class="d">Must be valid from <b>25 Oct</b> &mdash; you clear NZ immigration on the Auckland self-connect, not just on 7 Nov.</span></li><li>Australia subclass 600 &mdash; attach documents<span class="d">Lodged. Add itinerary PDF, funds, onward flights; watch for a biometrics request (VFS San Francisco).</span></li><li>NZ national parks need <b>no</b> entry pass<span class="d">Fiordland, Mt Cook and Tongariro are free to enter &mdash; costs there are shuttles, cruises and DOC bookings.</span></li></ol></div>
+  <div class="tier flat"><div class="tier-t"><span class="tier-n t3">TIER 3</span><span class="tier-l">Relax &mdash; no rush</span></div><ol><li>Plenty of slack &mdash; book any time<span class="d">Blue Mountains tour &middot; Daintree tour &middot; Kuranda Skyrail &middot; Port Arthur &middot; Kaik&#333;ura whale watching &middot; Rotorua h&#257;ng&#299; &middot; Waitomo &middot; Waiheke. All high-frequency with many operators.</span></li></ol></div>
+</div>
+  <footer>
+    <div class="legend">
+      <span class="stay-status st-booked">BOOKED</span>
+      <span class="stay-status st-tobook">TO BOOK</span>
+      <span class="stay-status st-none">NO STAY</span>
+    </div>
+    <p>Every stop has a stay box with check-in / check-out &middot; every leg has a flight box<br>
+    Cars: Tasmania (Hobart&rarr;Launceston) &middot; South Island (Queenstown&rarr;Picton) &middot; North Island (Wellington&rarr;Auckland)<br>
+    &#9670; = notable wild wildlife &middot; tap <b>Maps</b> or <b>Top reel</b> on any stop</p>
+  </footer>
 </div>
 </body>
 </html>
